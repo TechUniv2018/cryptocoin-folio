@@ -37,3 +37,33 @@ The use cases / user stories may be found at the project's [Issues page](https:/
 ![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/architechtureDiagram.png)
 
 The above diagram depicts the various systems involved in the project and how they are connected.
+
+## Wireframes
+
+### homepage:
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/homepage.png)
+
+### login page:
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/login.png)
+
+### sign up page:
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/register.png)
+
+### View Portfolio page:
+
+On this one, the team remains undecided
+
+View portfolio1:
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/viewportfolio1.png)
+
+View portfolio2:
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/viewportfolio2.png)
+
+### Edit portfolio page:
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/editportfolio.png)
