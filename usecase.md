@@ -1,3 +1,3 @@
-#USECASE DIAGRAM FOR THE PROJECT
+# USECASE DIAGRAM FOR THE PROJECT
 
-![usecase diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/images/usecase.png)
+![Usecase Diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/images/usecase.png)
