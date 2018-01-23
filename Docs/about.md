@@ -31,6 +31,41 @@ Create a simple cryptocoin ticker and dashboard portal with the following functi
 
 The use cases / user stories may be found at the project's [Issues page](https://github.com/shubhamzanwar/cryptocoin-folio/issues)
 
+## Use Case Diagrams:
+
+### homepage
+
+#### signup button
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecase/signupbutton.png)
+
+#### login button
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecase/loginbutton.png)
+
+#### Graph
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecase/publicgraph.png)
+
+#### ticker
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecase/publicticker.png)
+
+### user portfolio
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecase/userportfolio.png)
+
+#### edit portfolio button
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecase/editportfoliobutton.png)
+
+#### ticker
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecase/userticker.png)
+
+#### signout button
+
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecase/signout.png)
 
 ## Architecture Diagram:
 
