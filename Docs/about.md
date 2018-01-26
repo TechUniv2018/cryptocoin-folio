@@ -31,6 +31,10 @@ Create a simple cryptocoin ticker and dashboard portal with the following functi
 
 The use cases / user stories may be found at the project's [Issues page](https://github.com/shubhamzanwar/cryptocoin-folio/issues)
 
+## Entity Relationship(ER) Diagram
+
+![ER Diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/er.jpg)
+
 ## Use Case Diagrams:
 
 ### homepage
