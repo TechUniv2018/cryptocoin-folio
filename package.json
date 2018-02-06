@@ -18,10 +18,14 @@
   "homepage": "https://github.com/TechUniv2018/cryptocoin-folio#readme",
   "dependencies": {
     "eslint": "^4.17.0",
-    "hapi": "^16.6.2"
+    "hapi": "^16.6.2",
+    "pg": "^7.4.1",
+    "sequelize": "^4.32.7",
+    "sequelize-cli": "^3.2.0"
   },
   "devDependencies": {
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint-plugin-import": "^2.8.0",
+    "jest": "^22.1.4"
   }
 }
