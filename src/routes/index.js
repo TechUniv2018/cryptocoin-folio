@@ -1,7 +1,7 @@
 module.exports = [{
-    path: '/',
-    method: 'GET',
-    handler: (request, reply) => {
-      reply('Hello world!');
-    },
-  }]
+  path: '/',
+  method: 'GET',
+  handler: (request, reply) => {
+    reply('Hello world!');
+  },
+}];
