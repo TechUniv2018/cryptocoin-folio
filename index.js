@@ -1,5 +1,5 @@
 const Hapi = require('hapi');
-
+const Routes = require('./src/routes/')
 const server = new Hapi.Server();
 
 server.connection({
@@ -7,13 +7,7 @@ server.connection({
   port: 8081,
 });
 
-server.route({
-  path: '/',
-  method: 'GET',
-  handler: (request, reply) => {
-    reply('Hello world!');
-  },
-});
+server.route(Routes);
 
 if (!module.parent) {
   server.start((err) => {
