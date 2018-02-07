@@ -7,9 +7,18 @@ describe('Testing the LiveGraph API', () => {
       done();
     });
   });
+  test('The route should respond with a 404 for all other requests', (done) => {
+    const options = {
+      url: '/LiveGraph',
+      method: 'POST',
+    };
+    Server.inject(options, (response) => {
+      expect(response.statusCode).toBe(404);
+      done();
+    });
+  });
   test('The route should return an Array', (done) => {
     Server.inject('/LiveGraph?coin=BTC', (response) => {
-      console.log(response.result);
       expect(typeof response.result).toBe(typeof []);
       done();
     });
