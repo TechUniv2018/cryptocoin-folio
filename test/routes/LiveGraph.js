@@ -7,5 +7,11 @@ describe('Testing the LiveGraph API', () => {
       done();
     });
   });
+  test('The route should return an Object', (done) => {
+    Server.inject('/LiveGraph', (response) => {
+      expect(typeof response.result).toBe(typeof []);
+      done();
+    });
+  });
 });
 
