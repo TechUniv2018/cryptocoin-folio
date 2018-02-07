@@ -14,8 +14,9 @@ function fetchCoinValues(coinSymbol = 'BTC') {
         reject(err);
       });
       result.on('end', () => {
-        const prices = JSON.parse(data);
-        resolve(prices.Data);
+        const pricesObj = JSON.parse(data);
+        const prices = pricesObj.Data;
+        resolve(prices.slice(0, 1440));
       });
     });
   });

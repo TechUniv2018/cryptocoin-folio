@@ -7,8 +7,9 @@ describe('Testing the LiveGraph API', () => {
       done();
     });
   });
-  test('The route should return an Object', (done) => {
-    Server.inject('/LiveGraph', (response) => {
+  test('The route should return an Array', (done) => {
+    Server.inject('/LiveGraph?coin=BTC', (response) => {
+      console.log(response.result);
       expect(typeof response.result).toBe(typeof []);
       done();
     });
