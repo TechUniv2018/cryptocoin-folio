@@ -7,5 +7,8 @@ describe('Checking for the use case of the function liveDataApiFormatting', () =
   test('checking if the returned value is an object', () => {
     expect(typeof (formatFunction(apiToBeFormatted))).toBe('object');
   });
+  test('checking if the returned value is an object', () => {
+    expect(formatFunction(apiToBeFormatted)).toEqual({ BTC: { Change: 6, Price: 4, Volume: 5 } });
+  });
 });
 
