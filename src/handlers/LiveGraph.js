@@ -11,13 +11,15 @@ function fetchCoinValues(coinSymbol = 'BTC') {
         data += chunk;
       });
       result.on('error', (err) => {
-        reject(err);
+        reject(err.message);
       });
       result.on('end', () => {
         const pricesObj = JSON.parse(data);
         const prices = pricesObj.Data;
         resolve(prices.slice(0, 1440));
       });
+    }).on('error', () => {
+      reject(new Error('500: Server Error'));
     });
   });
   return APIcall;
