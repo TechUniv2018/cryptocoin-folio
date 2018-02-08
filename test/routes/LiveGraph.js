@@ -23,5 +23,11 @@ describe('Testing the LiveGraph API', () => {
       done();
     });
   });
+  test('The rouet should respond with a 422 for invalid coin', (done) => {
+    Server.inject('/LiveGraph?coin=STR', (response) => {
+      expect(response.statusCode).toBe(422);
+      done();
+    });
+  });
 });
 

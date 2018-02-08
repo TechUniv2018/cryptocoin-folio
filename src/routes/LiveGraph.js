@@ -1,13 +1,20 @@
 const fetchCoinValues = require('../handlers/LiveGraph');
+const checkPresence = require('../utils/helpers/checkPresence');
+const { coins } = require('../utils/constants');
 
 module.exports = [{
   path: '/LiveGraph',
   method: 'GET',
   handler: (request, response) => {
-    const coin = 'BTC' || request.query.coin;
-    fetchCoinValues(coin).then((prices) => {
-      response(prices).code(200);
-    });
+    const coin = request.query.coin || 'BTC';
+    console.log(coin);
+    if (!checkPresence(coins, coin)) {
+      response('InValid Coin').code(422);
+    } else {
+      fetchCoinValues(coin).then((prices) => {
+        response(prices).code(200);
+      });
+    }
   },
 }];
 
