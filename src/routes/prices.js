@@ -1,6 +1,6 @@
-const EXTERNAL_URLS = require('../externalLinks');
+const EXTERNAL_URLS = require('../utils/constants/externalLinks');
 const rp = require('request-promise');
-const liveDataApiFormatting = require('../utils/liveDataApiFormatting');
+const liveDataApiFormatting = require('../utils/helpers/liveDataApiFormatting');
 
 module.exports = [
   {
