@@ -22,7 +22,7 @@ module.exports = [
     handler: (Request, Response) => {
       const formData = Request.payload;
       if (!validateFormData(formData)) {
-        Response('invalid input').code(401);
+        Response('invalid input').code(400);
       } else {
         Response('Valid Input').code(200);
       }
