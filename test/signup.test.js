@@ -70,4 +70,46 @@ describe('Test for signup API with invalid data', () => {
       done();
     });
   });
+  test('Should pass for invalid password', (done) => {
+    options.payload = {
+      fullName: 'Jack Mark',
+      email: 'jackmark@gmail.com',
+      password: 'abcd',
+      confirmPassword: 'abcde',
+      mobileNumber: 9876543210,
+    };
+    Server.inject(options, (response) => {
+      expect(response.statusCode).toBe(400);
+      expect(response.result).toBe('Invalid Input');
+      done();
+    });
+  });
+  test('Should pass for invalid case sesitive password', (done) => {
+    options.payload = {
+      fullName: 'Jack Mark',
+      email: 'jackmark@gmail.com',
+      password: 'abcd',
+      confirmPassword: 'abcD',
+      mobileNumber: 9876543210,
+    };
+    Server.inject(options, (response) => {
+      expect(response.statusCode).toBe(400);
+      expect(response.result).toBe('Invalid Input');
+      done();
+    });
+  });
+  test('Should pass for empty password', (done) => {
+    options.payload = {
+      fullName: 'Jack Mark',
+      email: 'jackmark@gmail.com',
+      password: '',
+      confirmPassword: '',
+      mobileNumber: 9876543210,
+    };
+    Server.inject(options, (response) => {
+      expect(response.statusCode).toBe(400);
+      expect(response.result).toBe('Invalid Input');
+      done();
+    });
+  });
 });
