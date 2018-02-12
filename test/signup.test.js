@@ -48,7 +48,21 @@ describe('Test for signup API with invalid data', () => {
       email: 'jackmark@alibababa.com',
       password: 'sample',
       confirmPassword: 'sample',
-      mobileNumber: 987654321,
+      mobileNumber: 9876543210,
+    };
+    Server.inject(options, (response) => {
+      expect(response.statusCode).toBe(400);
+      expect(response.result).toBe('Invalid Input');
+      done();
+    });
+  });
+  test('Should pass for invalid email', (done) => {
+    options.payload = {
+      fullName: 'Jack Mark',
+      email: 'jackmark$gmail.com',
+      password: 'sample',
+      confirmPassword: 'sample',
+      mobileNumber: 9876543210,
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(400);
