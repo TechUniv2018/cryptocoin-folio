@@ -1,16 +1,16 @@
-'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  var transactions = sequelize.define('transactions', {
+  const transactions = sequelize.define('transactions', {
     coinId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
-    quantity: DataTypes.FLOAT
+    quantity: DataTypes.FLOAT,
   }, {
     classMethods: {
-      associate: function(models) {
+      associate(models) {
         // associations can be defined here
-      }
-    }
+      },
+    },
   });
   return transactions;
 };
