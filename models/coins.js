@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate(models) {
         // associations can be defined here
+        coins.belongsTo(models.prices);
+        coins.belongsTo(models.transactions);
       },
     },
   });
