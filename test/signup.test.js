@@ -16,11 +16,6 @@ describe('Test for signup API with valid data', () => {
   test('Response code should be 200 for valid signup API call', (done) => {
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(200);
-      done();
-    });
-  });
-  test('Response message should be valid input for valid signup API call', (done) => {
-    Server.inject(options, (response) => {
       expect(response.result).toBe('Valid Input');
       done();
     });

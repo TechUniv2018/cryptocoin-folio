@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const PasswordHash = require('password-hash');
 
 const validateFormData = (userData) => {
   const schema = Joi.object().keys({
@@ -21,6 +22,11 @@ const validateFormData = (userData) => {
   return true;
 };
 
+const encryptPassword = (plainPassword) => {
+  const encryptedPassword = PasswordHash.generate(plainPassword);
+  return encryptedPassword;
+};
+
 module.exports = [
   {
     method: 'POST',
@@ -30,6 +36,12 @@ module.exports = [
       if (!validateFormData(formData)) {
         Response('Invalid Input').code(400);
       } else {
+        const validFormData = {
+          fullName: formData.fullName,
+          email: formData.email,
+          mobileNumber: formData.mobileNumber,
+        };
+        validFormData.password = encryptPassword(formData.password);
         Response('Valid Input').code(200);
       }
     },
