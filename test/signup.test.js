@@ -47,4 +47,10 @@ describe('Test for signup API with invalid data', () => {
       done();
     });
   });
+  test('Response code should be 200 for valid signup API call', (done) => {
+    Server.inject(options, (response) => {
+      expect(response.result).toBe('Invalid Input');
+      done();
+    });
+  });
 });
