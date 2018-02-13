@@ -7,13 +7,6 @@ const options = {
 };
 
 describe('Test for signup API with valid data', () => {
-  beforeEach((done) => {
-    Models.users.destroy({
-      truncate: true,
-    }).then(() => {
-      done();
-    });
-  });
   afterAll((done) => {
     Models.users.destroy({
       truncate: true,
@@ -30,7 +23,7 @@ describe('Test for signup API with valid data', () => {
   };
   test('Should store data in user table', (done) => {
     Server.inject(options, (response) => {
-      expect(response.statusCode).toBe(200);
+      expect(response.statusCode).toBe(201);
       expect(response.result).toBe('Valid Input');
       done();
     });
@@ -47,7 +40,7 @@ describe('Test for signup API with invalid data', () => {
       mobileNumbe: 987654321,
     };
     Server.inject(options, (response) => {
-      expect(response.statusCode).toBe(400);
+      expect(response.statusCode).toBe(422);
       expect(response.result).toBe('Invalid Input');
       done();
     });
@@ -61,7 +54,7 @@ describe('Test for signup API with invalid data', () => {
       mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
-      expect(response.statusCode).toBe(400);
+      expect(response.statusCode).toBe(422);
       expect(response.result).toBe('Invalid Input');
       done();
     });
@@ -75,7 +68,7 @@ describe('Test for signup API with invalid data', () => {
       mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
-      expect(response.statusCode).toBe(400);
+      expect(response.statusCode).toBe(422);
       expect(response.result).toBe('Invalid Input');
       done();
     });
@@ -89,7 +82,7 @@ describe('Test for signup API with invalid data', () => {
       mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
-      expect(response.statusCode).toBe(400);
+      expect(response.statusCode).toBe(422);
       expect(response.result).toBe('Invalid Input');
       done();
     });
@@ -103,7 +96,7 @@ describe('Test for signup API with invalid data', () => {
       mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
-      expect(response.statusCode).toBe(400);
+      expect(response.statusCode).toBe(422);
       expect(response.result).toBe('Invalid Input');
       done();
     });
@@ -117,7 +110,7 @@ describe('Test for signup API with invalid data', () => {
       mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
-      expect(response.statusCode).toBe(400);
+      expect(response.statusCode).toBe(422);
       expect(response.result).toBe('Invalid Input');
       done();
     });

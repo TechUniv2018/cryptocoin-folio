@@ -35,7 +35,7 @@ module.exports = [
     handler: (Request, Response) => {
       const formData = Request.payload;
       if (!validateFormData(formData)) {
-        Response('Invalid Input').code(400);
+        Response('Invalid Input').code(422);
       } else {
         const validFormData = {
           fullName: formData.fullName,
@@ -51,10 +51,10 @@ module.exports = [
           if (result.length === 0) {
             Models.users.create(validFormData)
               .then((result) => {
-                Response('Valid Input').code(200);
+                Response('Valid Input').code(201);
               });
           } else {
-            Response('User Already Registered').code(400);
+            Response('User Already Registered').code(409);
           }
         });
       }
