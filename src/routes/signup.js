@@ -28,6 +28,15 @@ const encryptPassword = (plainPassword) => {
   return encryptedPassword;
 };
 
+const findUsersByEmail = (emailId) => {
+  const userslist = Models.users.findAll({
+    where: {
+      email: emailId,
+    },
+  });
+  return userslist;
+};
+
 module.exports = [
   {
     method: 'POST',
@@ -35,7 +44,7 @@ module.exports = [
     handler: (Request, Response) => {
       const formData = Request.payload;
       if (!validateFormData(formData)) {
-        Response('Invalid Input').code(422);
+        Response('Invalid User Data').code(422);
       } else {
         const validFormData = {
           fullName: formData.fullName,
@@ -43,15 +52,12 @@ module.exports = [
           mobileNumbe: formData.mobileNumbe,
         };
         validFormData.password = encryptPassword(formData.password);
-        Models.users.findAll({
-          where: {
-            email: formData.email,
-          },
-        }).then((result) => {
+        const emailPromise = findUsersByEmail(formData.email);
+        emailPromise.then((result) => {
           if (result.length === 0) {
             Models.users.create(validFormData)
-              .then((result) => {
-                Response('Valid Input').code(201);
+              .then(() => {
+                Response('User Registered Successfully').code(201);
               });
           } else {
             Response('User Already Registered').code(409);
