@@ -1,4 +1,5 @@
-const Server = require('../index.js');
+const Server = require('../../index.js');
+const Models = require('../../models/');
 
 const options = {
   method: 'POST',
@@ -6,14 +7,28 @@ const options = {
 };
 
 describe('Test for signup API with valid data', () => {
+  beforeEach((done) => {
+    Models.users.destroy({
+      truncate: true,
+    }).then(() => {
+      done();
+    });
+  });
+  afterAll((done) => {
+    Models.users.destroy({
+      truncate: true,
+    }).then(() => {
+      done();
+    }).catch(console.log);
+  });
   options.payload = {
     fullName: 'Jack Mark',
     email: 'jackmark@alibababa.com',
     password: 'sample',
     confirmPassword: 'sample',
-    mobileNumber: 9876543210,
+    mobileNumbe: 9876543210,
   };
-  test('Response code should be 200 for valid signup API call', (done) => {
+  test('Should store data in user table', (done) => {
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(200);
       expect(response.result).toBe('Valid Input');
@@ -29,7 +44,7 @@ describe('Test for signup API with invalid data', () => {
       email: 'jackmark@alibababa.com',
       password: 'sample',
       confirmPassword: 'sample',
-      mobileNumber: 987654321,
+      mobileNumbe: 987654321,
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(400);
@@ -43,7 +58,7 @@ describe('Test for signup API with invalid data', () => {
       email: 'jackmark@alibababa.com',
       password: 'sample',
       confirmPassword: 'sample',
-      mobileNumber: 9876543210,
+      mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(400);
@@ -57,7 +72,7 @@ describe('Test for signup API with invalid data', () => {
       email: 'jackmark$gmail.com',
       password: 'sample',
       confirmPassword: 'sample',
-      mobileNumber: 9876543210,
+      mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(400);
@@ -71,7 +86,7 @@ describe('Test for signup API with invalid data', () => {
       email: 'jackmark@gmail.com',
       password: 'abcd',
       confirmPassword: 'abcde',
-      mobileNumber: 9876543210,
+      mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(400);
@@ -85,7 +100,7 @@ describe('Test for signup API with invalid data', () => {
       email: 'jackmark@gmail.com',
       password: 'abcd',
       confirmPassword: 'abcD',
-      mobileNumber: 9876543210,
+      mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(400);
@@ -99,7 +114,7 @@ describe('Test for signup API with invalid data', () => {
       email: 'jackmark@gmail.com',
       password: '',
       confirmPassword: '',
-      mobileNumber: 9876543210,
+      mobileNumbe: 9876543210,
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(400);

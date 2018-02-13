@@ -1,12 +1,13 @@
 const Joi = require('joi');
 const PasswordHash = require('password-hash');
+const Models = require('../../models');
 
 const validateFormData = (userData) => {
   const schema = Joi.object().keys({
     fullName: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
-    mobileNumber: Joi.number().min(1000000000).max(9999999999),
+    mobileNumbe: Joi.number().min(1000000000).max(9999999999),
     confirmPassword: Joi.any().valid(Joi.ref('password')).required().options({
       language: {
         any: {
@@ -39,10 +40,23 @@ module.exports = [
         const validFormData = {
           fullName: formData.fullName,
           email: formData.email,
-          mobileNumber: formData.mobileNumber,
+          mobileNumbe: formData.mobileNumbe,
         };
         validFormData.password = encryptPassword(formData.password);
-        Response('Valid Input').code(200);
+        Models.users.findAll({
+          where: {
+            email: formData.email,
+          },
+        }).then((result) => {
+          if (result.length === 0) {
+            Models.users.create(validFormData)
+              .then((result) => {
+                Response('Valid Input').code(200);
+              });
+          } else {
+            Response('User Already Registered').code(400);
+          }
+        });
       }
     },
   },
