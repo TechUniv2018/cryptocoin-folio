@@ -1,5 +1,10 @@
 const formatFunction = (uneditedData) => {
-  let uneditedDataJson = JSON.parse(uneditedData);
+  let uneditedDataJson;
+  try {
+    uneditedDataJson = JSON.parse(uneditedData);
+  } catch (err) {
+    return 'invalid input';
+  }
   uneditedDataJson = uneditedDataJson.RAW;
   const coins = Object.keys(uneditedDataJson);
   const editedData = {};

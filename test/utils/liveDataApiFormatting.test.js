@@ -7,7 +7,15 @@ describe('Checking for the use case of the function liveDataApiFormatting', () =
   test('checking if the returned value is an object', () => {
     expect(typeof (formatFunction(apiToBeFormatted))).toBe('object');
   });
-  test('checking if the returned value is an object', () => {
+  test('checking if the keys of the object returned', () => {
     expect(formatFunction(apiToBeFormatted)).toEqual({ BTC: { Change: 6, Price: 4, Volume: 5 } });
+  });
+  test('failure testcase', () => {
+    const invalidInput = 'invalid input';
+    expect(typeof formatFunction(invalidInput)).toBe(typeof '{}');
+  });
+  test('failure testcase', () => {
+    const invalidInput = 'invalid input';
+    expect(formatFunction(invalidInput)).toBe('invalid input');
   });
 });
