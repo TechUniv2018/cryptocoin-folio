@@ -72,6 +72,44 @@ describe('test transaction table', () => {
     });
   });
 
+  test('insert transaction into transaction table should be successful', (done) => {
+    const coinObj = {
+      symbol: 'BTC',
+      name: 'Bitcoin',
+    };
+
+    const userObject = {
+      fullName: 'Jack Mark',
+      email: 'jackmark@alibababa.com',
+      password: 'sample',
+      confirmPassword: 'sample',
+      mobileNumbe: 9876543210,
+    };
+
+    Models.coins.create(coinObj).then((coinResult) => {
+      Models.users.create(userObject).then((userResult) => {
+        const transactionObject = {
+          coinId: coinResult.dataValues.id,
+          userId: userResult.dataValues.id,
+          price: 321.3213,
+          quantity: 10.12,
+        };
+
+        Models.transactions.create(transactionObject).then((resultTransaction) => {
+          const transactionResultObject = {
+            coinId: coinResult.dataValues.id,
+            userId: userResult.dataValues.id,
+            price: resultTransaction.dataValues.price,
+            quantity: resultTransaction.dataValues.quantity,
+          };
+
+          expect(transactionResultObject).toEqual(transactionObject);
+          done();
+        });
+      });
+    });
+  });
+
   beforeEach((done) => {
     Promise.all(cleanUpAllTables()).then(() => {
       done();
