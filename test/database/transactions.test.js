@@ -13,7 +13,7 @@ describe('test transaction table', () => {
     });
   });
 
-  beforeAll((done) => {
+  beforeEach((done) => {
     Promise.all(cleanUpAllTables()).then(() => {
       done();
     });
