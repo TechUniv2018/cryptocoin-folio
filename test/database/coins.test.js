@@ -1,5 +1,10 @@
 const Models = require('../../models');
 
+const cleanUpAllTables = () => [Models.prices.destroy({ cascade: true, truncate: true }),
+  Models.transactions.destroy({ cascade: true, truncate: true }),
+  Models.coins.destroy({ cascade: true, truncate: true }),
+  Models.users.destroy({ cascade: true, truncate: true })];
+
 describe('test coin table', () => {
   test('test coins table is created', (done) => {
     Models.coins.findAll().then((result) => {
@@ -30,6 +35,18 @@ describe('test coin table', () => {
         expect(result).toEqual([]);
         done();
       });
+    });
+  });
+
+  beforeAll((done) => {
+    Promise.all(cleanUpAllTables()).then(() => {
+      done();
+    });
+  });
+
+  afterAll((done) => {
+    Promise.all(cleanUpAllTables()).then(() => {
+      done();
     });
   });
 });
