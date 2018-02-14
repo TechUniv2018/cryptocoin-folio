@@ -3,7 +3,7 @@ const checkPresence = require('../utils/helpers/checkPresence');
 const { coins } = require('../utils/constants');
 
 module.exports = [{
-  path: '/LiveGraph',
+  path: '/liveGraph',
   method: 'GET',
   handler: (request, response) => {
     const coin = request.query.coin || 'BTC';
