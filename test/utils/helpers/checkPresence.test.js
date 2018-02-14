@@ -11,4 +11,9 @@ describe('Testing the checkPresence helper function', () => {
     const element = 3;
     expect(checkPresence(arrToBeScanned, element)).toBe(true);
   });
+  test('The function should return false if the element is not a part of the array', () => {
+    const arrToBeScanned = [1, 2, 3];
+    const element = 4;
+    expect(checkPresence(arrToBeScanned, element)).toBe(false);
+  });
 });
