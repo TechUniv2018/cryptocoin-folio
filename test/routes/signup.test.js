@@ -119,7 +119,7 @@ describe('Test for signup API with invalid data', () => {
       done();
     });
   });
-  test('Should pass for invalid case sesitive password', (done) => {
+  test('Should pass for invalid case sensitive password', (done) => {
     options.payload = {
       fullName: 'Jack Mark',
       email: 'jackmark@gmail.com',
