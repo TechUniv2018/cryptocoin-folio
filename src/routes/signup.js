@@ -37,6 +37,16 @@ const findUsersByEmail = (emailId) => {
   return userslist;
 };
 
+const createValidateFormData = (formData) => {
+  const validFormData = {
+    fullName: formData.fullName,
+    email: formData.email,
+    mobileNumbe: formData.mobileNumbe,
+  };
+  validFormData.password = encryptPassword(formData.password);
+  return validateFormData;
+};
+
 module.exports = [
   {
     method: 'POST',
@@ -46,18 +56,15 @@ module.exports = [
       if (!validateFormData(formData)) {
         Response('Invalid User Data').code(422);
       } else {
-        const validFormData = {
-          fullName: formData.fullName,
-          email: formData.email,
-          mobileNumbe: formData.mobileNumbe,
-        };
-        validFormData.password = encryptPassword(formData.password);
+        const validFormData = createValidateFormData(formData);
         const emailPromise = findUsersByEmail(formData.email);
         emailPromise.then((result) => {
           if (result.length === 0) {
             Models.users.create(validFormData)
               .then(() => {
                 Response('User Registered Successfully').code(201);
+              }).catch(() => {
+                Response('User couldnt be stored in the Database! Sorry').code(500);
               });
           } else {
             Response('User Already Registered').code(409);
