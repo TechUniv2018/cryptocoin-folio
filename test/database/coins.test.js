@@ -30,7 +30,7 @@ describe('test coin table', () => {
   });
 
   test('delete coin from coins table', (done) => {
-    Models.coins.destroy({ where: { id: 1 }, cascade: true }).then(() => {
+    Models.coins.destroy({ where: { symbol: 'BTC' }, cascade: true }).then(() => {
       Models.coins.findAll().then((result) => {
         expect(result).toEqual([]);
         done();
