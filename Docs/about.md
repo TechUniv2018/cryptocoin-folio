@@ -33,15 +33,15 @@ The use cases / user stories may be found at the project's [Issues page](https:/
 
 ## Entity Relationship(ER) Diagram
 
-![ER Diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/er.jpg)
+![ER Diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/er.jpg)
 
 ## Use Case Diagrams:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecaseDiagram.png)
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/usecaseDiagram.png)
 
 ## Architecture Diagram:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/architechtureDiagram.png)
+![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/architechtureDiagram.png)
 
 The above diagram depicts the various systems involved in the project and how they are connected.
 
