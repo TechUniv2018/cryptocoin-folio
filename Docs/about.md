@@ -47,30 +47,30 @@ The above diagram depicts the various systems involved in the project and how th
 
 ## Wireframes
 
-### homepage:
+### Homepage:
 
-![Alt text](https://github.com/TechUniv2018/cryptocoin-folio/blob/master/Docs/wireframes/homepage.png)
+![Home Page](https://github.com/TechUniv2018/cryptocoin-folio/blob/master/Docs/wireframes/homepage.png)
 
-### login page:
+### Login Page:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/login.png)
+![Login Page](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/login.png)
 
-### sign up page:
+### Sign Up Page:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/register.png)
+![Sign Up Page](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/register.png)
 
-### View Portfolio page:
+### View Portfolio Page:
 
 On this one, the team remains undecided
 
-View portfolio1:
+View Portfolio 1:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/viewportfolio1.png)
+![View Portofolio](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/viewportfolio1.png)
 
-View portfolio2:
+View Portfolio 2:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/viewportfolio2.png)
+![View Portofolio](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/viewportfolio2.png)
 
-### Edit portfolio page:
+### Edit Portfolio Page:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/editportfolio.png)
+![Edit Portfolio Page](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/editportfolio.png)
