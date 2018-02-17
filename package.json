@@ -4,7 +4,7 @@
   "description": "A website for a simplified crypto-coin ticker and dashboard portal which shows near-real-time value movement of the 10 coins by fetching the data from websites like coinmarketcap.com, poloniex.com. It shows the visualization of data for 3 periods (1 day, 1 week, 1 month) and derive metrics from the collected data (simple moving average, candle stick representation).",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/sequelize db:migrate:undo:all && NODE_ENV=test sequelize db:migrate && jest --forceExit",
+    "test": "NODE_ENV=test ./node_modules/.bin/sequelize db:migrate:undo:all && NODE_ENV=test sequelize db:migrate && jest --forceExit --runInBand",
     "start": "./node_modules/.bin/sequelize db:migrate && node index.js"
   },
   "repository": {
