@@ -30,4 +30,3 @@ describe('Testing the LiveGraph API', () => {
     });
   });
 });
-

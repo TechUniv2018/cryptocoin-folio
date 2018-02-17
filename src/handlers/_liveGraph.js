@@ -26,4 +26,3 @@ function fetchCoinValues(coinSymbol = 'BTC') {
 }
 
 module.exports = fetchCoinValues;
-

@@ -1,4 +1,4 @@
-const LiveGraphHandler = require('../../src/handlers/LiveGraph');
+const LiveGraphHandler = require('../../src/handlers/liveGraph');
 
 describe('Testing the Live Graph Handler function', () => {
   test('The function must return a Promise', () => {
