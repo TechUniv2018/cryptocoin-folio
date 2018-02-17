@@ -1,4 +1,4 @@
-const LiveGraph = require('./LiveGraph');
+const liveGraph = require('./liveGraph');
 
 module.exports = [{
   path: '/',
@@ -6,4 +6,4 @@ module.exports = [{
   handler: (request, reply) => {
     reply('Hello world!');
   },
-}].concat(LiveGraph);
+}].concat(liveGraph);
