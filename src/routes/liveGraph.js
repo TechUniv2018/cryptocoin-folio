@@ -1,4 +1,4 @@
-const fetchCoinValues = require('../handlers/LiveGraph');
+const fetchCoinValues = require('../handlers/liveGraph');
 const checkPresence = require('../utils/helpers/checkPresence');
 const { coins } = require('../utils/constants');
 
