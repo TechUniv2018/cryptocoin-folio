@@ -5,10 +5,16 @@ const apiToBeFormatted = '{ "RAW": { "BTC": { "USD":  { "PRICE": "4", "VOLUME24H
 // console.log(r.RAW.USD);
 describe('Checking for the use case of the function liveDataApiFormatting', () => {
   test('checking if the returned value is an object', () => {
-    expect(typeof (formatFunction(apiToBeFormatted))).toBe('object');
+    expect(formatFunction(apiToBeFormatted)).toBeInstanceOf(Array);
   });
   test('checking if the keys of the object returned', () => {
-    expect(formatFunction(apiToBeFormatted)).toEqual({ BTC: { Change: 6, Price: 4, Volume: 5 } });
+    expect(formatFunction(apiToBeFormatted)).toEqual([{
+      Symbol: 'BTC',
+      Name: 'Bitcoin',
+      Change: 6,
+      Price: 4,
+      Volume: 5,
+    }]);
   });
   test('failure testcase', () => {
     const invalidInput = 'invalid input';
