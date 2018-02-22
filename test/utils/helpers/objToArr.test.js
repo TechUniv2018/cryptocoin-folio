@@ -10,7 +10,7 @@ describe('Testing the ObjToArr function', () => {
       close: 233,
       volumeto: 12223,
     }];
-    expect(objToArr(objArr)).toBeInstanceOf(Array);
+    expect(typeof objToArr(objArr)).toBe(typeof {});
   });
 });
 
