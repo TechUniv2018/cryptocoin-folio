@@ -1,4 +1,4 @@
-const EXTERNAL_URLS = require('../utils/constants/externalLinks');
+const EXTERNAL_URLS = require('../utils/constants').externalLinks;
 const rp = require('request-promise');
 const liveDataApiFormatting = require('../utils/helpers/liveDataApiFormatting');
 
