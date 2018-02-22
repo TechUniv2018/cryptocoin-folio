@@ -1,10 +1,10 @@
 const coins = require('./coins');
-const ExternalLinks = require('./externalLinks');
-const NamesDict = require('./SymbolsToCoins');
+const externalLinks = require('./externalLinks');
+const namesDict = require('./SymbolsToCoins');
 
 module.exports = {
   coins,
-  ExternalLinks,
-  NamesDict,
+  externalLinks,
+  namesDict,
 };
 
