@@ -1,6 +1,10 @@
-const coins = ['BTC', 'ETH', 'XRP', 'LTC', 'NEO', 'XMR', 'ZEC', 'BCH', 'BTS', 'ETC'];
+const coins = require('./coins');
+const ExternalLinks = require('./externalLinks');
+const NamesDict = require('./SymbolsToCoins');
 
 module.exports = {
   coins,
+  ExternalLinks,
+  NamesDict,
 };
 
