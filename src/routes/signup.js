@@ -44,17 +44,20 @@ const createValidateFormData = formData => ({
   password: encryptPassword(formData.password),
 });
 
+const getPayload = (data) => {
+  if (typeof data.payload === 'string') {
+    return JSON.parse(data.payload);
+  }
+  return data.payload;
+};
+
 module.exports = [
   {
     method: 'POST',
     path: '/signup',
     handler: (Request, Response) => {
-      let formData;
-      if (typeof Request.payload === 'string') {
-        formData = JSON.parse(Request.payload);
-      } else {
-        formData = Request.payload;
-      }
+      const formData = getPayload(Request);
+
       if (!validateFormData(formData)) {
         Response('Invalid User Data').code(422);
       } else {
