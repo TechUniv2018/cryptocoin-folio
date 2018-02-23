@@ -37,29 +37,28 @@ const findUsersByEmail = (emailId) => {
   return userslist;
 };
 
-const createValidateFormData = (formData) => {
-  const validFormData = {
-    fullName: formData.fullName,
-    email: formData.email,
-    mobileNumbe: formData.mobileNumbe,
-  };
-  validFormData.password = encryptPassword(formData.password);
-  return validateFormData;
-};
+const createValidateFormData = formData => ({
+  fullName: formData.fullName,
+  email: formData.email,
+  mobileNumbe: formData.mobileNumbe,
+  password: encryptPassword(formData.password),
+});
 
 module.exports = [
   {
     method: 'POST',
     path: '/signup',
     handler: (Request, Response) => {
-      const formData = Request.payload;
+      const formData = JSON.parse(Request.payload);
+      console.log('request aayi hai', formData);
       if (!validateFormData(formData)) {
         Response('Invalid User Data').code(422);
       } else {
         const validFormData = createValidateFormData(formData);
-        const emailPromise = findUsersByEmail(formData.email);
+        const emailPromise = findUsersByEmail(validFormData.email);
         emailPromise.then((result) => {
           if (result.length === 0) {
+            console.log(validFormData);
             Models.users.create(validFormData)
               .then(() => {
                 Response('User Registered Successfully').code(201);

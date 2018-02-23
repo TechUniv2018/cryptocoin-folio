@@ -12,8 +12,11 @@ server.route(Routes);
 
 if (!module.parent) {
   server.start((err) => {
-    console.log(err);
-    console.log('Server running at:', server.info.uri);
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Server running at:', server.info.uri);
+    }
   });
 }
 
