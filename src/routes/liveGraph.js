@@ -1,5 +1,6 @@
 const fetchCoinValues = require('../handlers/liveGraph');
 const checkPresence = require('../utils/helpers/checkPresence');
+const objToArr = require('../utils/helpers/objToArr');
 const { coins } = require('../utils/constants');
 
 module.exports = [{
@@ -13,7 +14,7 @@ module.exports = [{
     } else {
       fetchCoinValues(coin)
         .then((prices) => {
-          response(prices).code(200);
+          response(objToArr(prices)).code(200);
         })
         .catch(() => response('500: Internal Server Error').code(500));
     }
