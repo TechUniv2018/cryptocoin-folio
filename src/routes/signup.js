@@ -49,8 +49,12 @@ module.exports = [
     method: 'POST',
     path: '/signup',
     handler: (Request, Response) => {
-      const formData = JSON.parse(Request.payload);
-      console.log('request aayi hai', formData);
+      let formData;
+      if (typeof Request.payload === 'string') {
+        formData = JSON.parse(Request.payload);
+      } else {
+        formData = Request.payload;
+      }
       if (!validateFormData(formData)) {
         Response('Invalid User Data').code(422);
       } else {
