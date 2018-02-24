@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/TechUniv2018/cryptocoin-folio#readme",
   "dependencies": {
+    "binance-api-node": "^0.5.6",
     "eslint": "^4.17.0",
     "hapi": "^16.6.2",
     "joi": "^13.1.2",
