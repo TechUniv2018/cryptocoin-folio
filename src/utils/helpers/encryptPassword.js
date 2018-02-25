@@ -1,8 +1,8 @@
 const PasswordHash = require('password-hash');
 
-const encryptedPassword = (plainPassword) => {
+const encryptPassword = (plainPassword) => {
   const newPassword = PasswordHash.generate(plainPassword);
   return newPassword;
 };
 
-module.exports = encryptedPassword;
+module.exports = encryptPassword;
