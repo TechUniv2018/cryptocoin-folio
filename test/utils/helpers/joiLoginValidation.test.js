@@ -15,4 +15,18 @@ describe('Test for login Joi Validation', () => {
     };
     expect(joiLoginValidation(options)).toBe(false);
   });
+  test('Should pass for empty password', () => {
+    const options = {
+      email: 'jackmark@gmail.com',
+      password: '',
+    };
+    expect(joiLoginValidation(options)).toBe(false);
+  });
+  test('Should pass for empty email', () => {
+    const options = {
+      email: '',
+      password: 'abcd',
+    };
+    expect(joiLoginValidation(options)).toBe(false);
+  });
 });
