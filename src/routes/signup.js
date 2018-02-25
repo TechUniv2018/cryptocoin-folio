@@ -1,5 +1,5 @@
 const joiValidation = require('../utils/helpers/joiValidation');
-const encryptUserData = require('../utils/helpers/encyptUserData');
+const encryptUserData = require('../utils/helpers/encryptUserData');
 const isExsitingUser = require('../utils/helpers/isExsitingUser');
 const createNewUser = require('../utils/helpers/createNewUser');
 const getUserFormPayload = require('../utils/helpers/getUserFormPayload');

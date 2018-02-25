@@ -1,4 +1,4 @@
-const encryptUserdData = require('../../../src/utils/helpers/encyptUserData');
+const encryptUserdData = require('../../../src/utils/helpers/encryptUserData');
 
 describe('Test for encryptUserdData helper function', () => {
   test('Should return user data object', (done) => {
