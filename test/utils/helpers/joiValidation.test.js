@@ -31,4 +31,14 @@ describe('Test for signup API with invalid data', () => {
     };
     expect(joiValidation(options)).toBe(false);
   });
+  test('Should pass for invalid password', () => {
+    const options = {
+      fullName: 'Jack Mark',
+      email: 'jackmark@gmail.com',
+      password: 'abcd',
+      confirmPassword: 'abcde',
+      mobileNumbe: 9876543210,
+    };
+    expect(joiValidation(options)).toBe(false);
+  });
 });
