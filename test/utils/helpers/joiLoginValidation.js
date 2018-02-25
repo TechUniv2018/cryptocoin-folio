@@ -8,4 +8,11 @@ describe('Test for login Joi Validation', () => {
     };
     expect(joiLoginValidation(options)).toBe(true);
   });
+  test('Should pass for invalid email', () => {
+    const options = {
+      email: 'jackmark$gmail.com',
+      password: 'sample',
+    };
+    expect(joiLoginValidation(options)).toBe(false);
+  });
 });
