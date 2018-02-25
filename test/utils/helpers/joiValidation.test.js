@@ -11,4 +11,14 @@ describe('Test for signup API with invalid data', () => {
     };
     expect(joiValidation(options)).toBe(false);
   });
+  test('Should pass for invalid full name', () => {
+    const options = {
+      fullName: 123456,
+      email: 'jackmark@alibababa.com',
+      password: 'sample',
+      confirmPassword: 'sample',
+      mobileNumbe: 9876543210,
+    };
+    expect(joiValidation(options)).toBe(false);
+  });
 });
