@@ -1,4 +1,5 @@
 const signup = require('./signup');
+const login = require('./login');
 
 module.exports = [{
   path: '/',
@@ -6,4 +7,4 @@ module.exports = [{
   handler: (request, reply) => {
     reply('Hello world!');
   },
-}].concat(signup);
+}].concat(signup, login);
