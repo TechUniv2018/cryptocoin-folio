@@ -38,8 +38,51 @@ describe('Test for login API with valid data', () => {
       },
     };
     Server.inject(options, (response) => {
-      expect(response.statusCode).toBe(200);
-      expect(response.result).toBe('log In Success');
+      expect(response.result.code).toBe(200);
+      expect(response.result.message).toBe('Logged in');
+      done();
+    });
+  });
+
+  test('The route should respond with the object containing keys: "token", "code", "message", "username" for a valid user', (done) => {
+    const options = {
+      method: 'POST',
+      url: '/login',
+      payload: {
+        email: 'jackmark@alibababa.com',
+        password: 'sample',
+      },
+    };
+    Server.inject(options, (response) => {
+      expect(Object.keys(response.result)).toEqual(['code', 'token', 'message', 'username']);
+      done();
+    });
+  });
+  test('The route should respond with the "User Not Registered" for an unregistered user', (done) => {
+    const options = {
+      method: 'POST',
+      url: '/login',
+      payload: {
+        email: 'unregistered@alibababa.com',
+        password: 'unregistered',
+      },
+    };
+    Server.inject(options, (response) => {
+      expect(response.result.message).toBe('User Not Registered');
+      done();
+    });
+  });
+  test('The route should respond with the "Invalid Password" if wrong password is entered for existing user', (done) => {
+    const options = {
+      method: 'POST',
+      url: '/login',
+      payload: {
+        email: 'jackmark@alibababa.com',
+        password: 'wrongPassWoRd',
+      },
+    };
+    Server.inject(options, (response) => {
+      expect(response.result.message).toBe('Invalid Password');
       done();
     });
   });

@@ -17,17 +17,24 @@ module.exports = [
         fetchUserDetails(userData.email)
           .then((result) => {
             if (result === null) {
-              Response('User Not Registered').code(409);
+              Response({
+                code: 409,
+                message: 'User Not Registered',
+              });
             } else {
               const passwordMatch = verifyPassword(userData.password, result.dataValues.password);
               if (passwordMatch === false) {
-                Response('Invalid Password').code(422);
+                Response({
+                  code: 422,
+                  message: 'Invalid Password',
+                });
               } else {
                 Response({
+                  code: 200,
                   token: createToken(result.dataValues),
                   message: 'Logged in',
                   username: result.dataValues.fullName,
-                }).code(200);
+                });
               }
             }
           });
