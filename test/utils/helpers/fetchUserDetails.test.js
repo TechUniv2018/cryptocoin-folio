@@ -24,5 +24,11 @@ describe('Testing the fetchUsers function', () => {
       done();
     });
   });
+  test('The function should return a promise that resolves with the null if a invalid email is sent', (done) => {
+    fetchUsers('shubham.nwar@gmail.com').then((user) => {
+      expect(user).toBe(null);
+      done();
+    });
+  });
 });
 
