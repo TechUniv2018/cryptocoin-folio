@@ -23,7 +23,11 @@ module.exports = [
               if (passwordMatch === false) {
                 Response('Invalid Password').code(422);
               } else {
-                Response(createToken(result.dataValues)).code(200);
+                Response({
+                  token: createToken(result.dataValues),
+                  message: 'Logged in',
+                  username: result.dataValues.fullName,
+                }).code(200);
               }
             }
           });
