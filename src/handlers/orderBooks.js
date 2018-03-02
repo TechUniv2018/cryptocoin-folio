@@ -5,8 +5,12 @@ const Binance = require('binance-api-node').default;
 
 const orderBooks = (coin) => {
   const client = Binance();
-  if (coin === 'BTC') {
-    return client.book({ symbol: `${coin}USDT` }).then((data) => {
+  let newCoin = coin;
+  if (newCoin === 'BCH') {
+    newCoin = 'BCC';
+  }
+  if (newCoin === 'BTC') {
+    return client.book({ symbol: `${newCoin}USDT` }).then((data) => {
       // console.log(data.asks,data.bids);
       let newDataAsks = data.asks;
       const finalData = {};
@@ -32,7 +36,7 @@ const orderBooks = (coin) => {
   }
   return axios.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USDT').then((dataUSDT) => {
     const priceBTC = Number(dataUSDT.data.USDT);
-    return client.book({ symbol: `${coin}BTC` }).then((data) => {
+    return client.book({ symbol: `${newCoin}BTC` }).then((data) => {
       // console.log(data.asks,data.bids);
       let newDataAsks = data.asks;
       const finalData = {};
