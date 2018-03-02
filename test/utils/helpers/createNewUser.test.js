@@ -20,7 +20,7 @@ describe('Test for signup API with valid data', () => {
     };
     createUser(options)
       .then((message) => {
-        expect(message).toBe('OK');
+        expect(typeof message).toBe('object');
         done();
       });
   });

@@ -20,9 +20,18 @@ module.exports = [
             } else {
               createNewUser(encryptUserData(userData))
                 .then((databaseMessage) => {
-                  if (databaseMessage === 'OK') {
+                  const expectedOutput = ['createdAt',
+                    'email',
+                    'fullName',
+                    'id',
+                    'mobileNumbe',
+                    'password',
+                    'updatedAt'];
+                  if (Object.keys(databaseMessage).sort().toString() === expectedOutput.sort().toString()) {
+                    console.log('pass');
                     Response('User Registered Successfully').code(201);
                   } else {
+                    console.log('fail');
                     Response('Internal Database Server Error').code(500);
                   }
                 });
