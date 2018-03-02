@@ -24,7 +24,7 @@ describe('testing server', () => {
       done();
     });
   });
-  test('Response should contain object', (done) => {
+  test('Response should contain object for BTC', (done) => {
     const options = {
       method: 'GET',
       url: '/orders/BTC',
@@ -35,6 +35,31 @@ describe('testing server', () => {
     };
     Server.inject(options, (response) => {
       expect(coinsCount(response.payload)).toBe(2);
+      done();
+    });
+  });
+  test('Response should contain object for other coins', (done) => {
+    const options = {
+      method: 'GET',
+      url: '/orders/LTC',
+    };
+    const coinsCount = (payload) => {
+      const coins = Object.keys(JSON.parse(payload));
+      return coins.length;
+    };
+    Server.inject(options, (response) => {
+      expect(coinsCount(response.payload)).toBe(2);
+      done();
+    });
+  });
+  test('Response code should be object for BTC', (done) => {
+    const options = {
+      method: 'GET',
+      url: '/orders/BTC',
+    };
+    Server.inject(options, (response) => {
+      console.log(response);
+      expect(Object.keys(JSON.parse(response.payload)).length).toBe(2);
       done();
     });
   });
