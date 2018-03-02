@@ -15,9 +15,15 @@ describe('testing the orderbooks function', () => {
       done();
     });
   });
-  test('the function should return an object with two keys for BTC', (done) => {
+  test('the function should return an object with two keys for other coins', (done) => {
     orderBooks('LTC').then((data) => {
       expect((Object.keys(data)).length).toBe(2);
+      done();
+    });
+  });
+  test('the function should return an object with 3 keys for each item for BTC', (done) => {
+    orderBooks('BTC').then((data) => {
+      expect((Object.keys(data.asks[0]).length)).toBe(3);
       done();
     });
   });
