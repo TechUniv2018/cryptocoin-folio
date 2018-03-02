@@ -1,5 +1,4 @@
 const createCoin = require('../../../src/utils/helpers/createCoin');
-const createNewUser = require('../../../src/utils/helpers/createNewUser');
 const Models = require('../../../models/');
 
 describe('Test for create coin function', () => {
@@ -16,9 +15,9 @@ describe('Test for create coin function', () => {
       symbol: '$',
       name: 'bitcoin',
     };
-    createCoin(options)
+    createCoin(options.symbol, options.name)
       .then((message) => {
-        expect(message).toBe('OK');
+        expect(Object.keys(message).sort()).toEqual(['id', 'name', 'symbol', 'createdAt', 'updatedAt'].sort());
         done();
       });
   });

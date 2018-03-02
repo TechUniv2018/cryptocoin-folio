@@ -1,10 +1,10 @@
 const Models = require('../../../models');
 
-const createCoin = (symbol, name) => new Promise((resolve, reject) =>
+const createCoin = (symbol, name) =>
   Models.coins.create({
     symbol,
     name,
   })
-    .then(resolve('OK'))
-    .catch(err => reject(err)));
+    .then(result => result.dataValues)
+    .catch(err => err);
 module.exports = createCoin;
