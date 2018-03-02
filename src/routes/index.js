@@ -1,5 +1,7 @@
 const signup = require('./signup');
 const login = require('./login');
+const liveGraph = require('./liveGraph');
+const prices = require('./prices');
 
 module.exports = [{
   path: '/',
@@ -7,4 +9,5 @@ module.exports = [{
   handler: (request, reply) => {
     reply('Hello world!');
   },
-}].concat(signup, login);
+}].concat(signup, prices, liveGraph, login);
+
