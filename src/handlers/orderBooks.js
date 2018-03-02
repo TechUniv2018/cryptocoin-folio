@@ -27,7 +27,6 @@ const orderBooks = (coin) => {
         return newItem;
       });
       finalData.bids = newDataAsks;
-      console.log(finalData);
       return finalData;
     });
   }
@@ -54,7 +53,6 @@ const orderBooks = (coin) => {
         return newItem;
       });
       finalData.bids = newDataAsks;
-      console.log(finalData);
       return finalData;
     });
   });
