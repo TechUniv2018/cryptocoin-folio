@@ -11,11 +11,11 @@ describe('Test for create coin function', () => {
     }).catch(console.log);
   });
   test('Should store data in coin table', (done) => {
-    const options = {
+    const coin = {
       symbol: '$',
       name: 'bitcoin',
     };
-    createCoin(options.symbol, options.name)
+    createCoin(coin)
       .then((message) => {
         expect(Object.keys(message).sort()).toEqual(['id', 'name', 'symbol', 'createdAt', 'updatedAt'].sort());
         done();
