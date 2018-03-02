@@ -8,7 +8,6 @@ module.exports = [{
   method: 'GET',
   handler: (request, response) => {
     const coin = request.query.coin || 'BTC';
-    // console.log(coin);
     if (!checkPresence(coins, coin)) {
       response('InValid Coin').code(422);
     } else {

@@ -11,7 +11,6 @@ const orderBooks = (coin) => {
   }
   if (newCoin === 'BTC') {
     return client.book({ symbol: `${newCoin}USDT` }).then((data) => {
-      // console.log(data.asks,data.bids);
       let newDataAsks = data.asks;
       const finalData = {};
       newDataAsks = newDataAsks.map((item) => {
@@ -37,7 +36,6 @@ const orderBooks = (coin) => {
   return axios.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USDT').then((dataUSDT) => {
     const priceBTC = Number(dataUSDT.data.USDT);
     return client.book({ symbol: `${newCoin}BTC` }).then((data) => {
-      // console.log(data.asks,data.bids);
       let newDataAsks = data.asks;
       const finalData = {};
       newDataAsks = newDataAsks.map((item) => {

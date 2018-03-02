@@ -58,7 +58,6 @@ describe('testing server', () => {
       url: '/orders/BTC',
     };
     Server.inject(options, (response) => {
-      console.log(response);
       expect(Object.keys(JSON.parse(response.payload)).length).toBe(2);
       done();
     });
@@ -69,7 +68,6 @@ describe('testing server', () => {
       url: '/orders/LTC',
     };
     Server.inject(options, (response) => {
-      console.log(response);
       expect(Object.keys(JSON.parse(response.payload)).length).toBe(2);
       done();
     });
