@@ -24,4 +24,18 @@ describe('testing server', () => {
       done();
     });
   });
+  test('Response should contain object', (done) => {
+    const options = {
+      method: 'GET',
+      url: '/orders/BTC',
+    };
+    const coinsCount = (payload) => {
+      const coins = Object.keys(JSON.parse(payload));
+      return coins.length;
+    };
+    Server.inject(options, (response) => {
+      expect(coinsCount(response.payload)).toBe(2);
+      done();
+    });
+  });
 });
