@@ -1,8 +1,11 @@
 const orderBooks = require('../../src/handlers/orderBooks');
 
 describe('testing the orderbooks function', () => {
-  test('checking if the function returns a promise or not', () => {
+  test('checking if the function returns a promise or not for BTC', () => {
     expect(orderBooks('BTC')).toBeInstanceOf(Promise);
+  });
+  test('checking if the function returns a promise or not for other coins', () => {
+    expect(orderBooks('LTC')).toBeInstanceOf(Promise);
   });
   test('the function should return an object when BTC is supplied', (done) => {
     orderBooks('BTC').then(data => expect(typeof data).toBe('object'));
