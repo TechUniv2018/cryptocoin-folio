@@ -72,4 +72,14 @@ describe('testing server', () => {
       done();
     });
   });
+  test('Response code should be object for other coins', (done) => {
+    const options = {
+      method: 'GET',
+      url: '/orders/BCH',
+    };
+    Server.inject(options, (response) => {
+      expect(Object.keys(JSON.parse(response.payload)).length).toBe(2);
+      done();
+    });
+  });
 });
