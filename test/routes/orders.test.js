@@ -63,4 +63,15 @@ describe('testing server', () => {
       done();
     });
   });
+  test('Response code should be object for other coins', (done) => {
+    const options = {
+      method: 'GET',
+      url: '/orders/LTC',
+    };
+    Server.inject(options, (response) => {
+      console.log(response);
+      expect(Object.keys(JSON.parse(response.payload)).length).toBe(2);
+      done();
+    });
+  });
 });
