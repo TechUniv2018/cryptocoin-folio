@@ -1,6 +1,7 @@
-const coinNames = require('../constants/index').namesDict;
+const coinNames = require('../constants/coin-dictionary');
 
 const formatFunction = (uneditedData) => {
+  // console.log(uneditedData);
   let uneditedDataJson;
   try {
     uneditedDataJson = JSON.parse(uneditedData);
