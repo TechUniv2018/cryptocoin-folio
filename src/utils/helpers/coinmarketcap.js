@@ -21,20 +21,45 @@ const coinmarketcap = coins => axios.get('https://api.coinmarketcap.com/v1/ticke
   }
   return obj;
 });
+//   const obj = dataArray.reduce((accumulator, singleData) => {
+//     const newCoins = coins.filter((coin) => {
+//       if (coin === singleData.symbol) {
+//         console.log(singleData.name);
+//         return true;
+//       }
+//       return false;
+//     });
+//     console.log(newCoins);
+//     return {};
+//   });
+// });
+
+
+const cryptocompare = coins => axios.get('https://www.cryptocompare.com/api/data/coinlist/').then((data) => {
+  const cryptoCoins = Object.keys(data.data.Data);
+  const sameCoins = [];
+  for (let i = 0; i < coins.length; i++) {
+    for (let j = 0; j < cryptoCoins.length; j++) {
+      if (cryptoCoins[j] === coins[i]) {
+        sameCoins.push(coins[i]);
+      }
+    }
+  }
+  coinmarketcap(sameCoins).then((dataToWrite) => {
+    fs.writeFile('../constants/coin-dictionary.js', `module.exports =${JSON.stringify(dataToWrite)}`);
+  });
+});
 
 const binance = () => axios.get('https://api.binance.com/api/v1/ticker/allPrices').then((data) => {
   const coins = ['BTC'];
   const dataArray = data.data;
   for (let i = 0; i < dataArray.length; i += 1) {
-    const symbol = dataArray[i].symbol;
+    const { symbol } = dataArray[i];
     if (symbol.indexOf('BTC') > 0) {
       coins.push(symbol.slice(0, symbol.indexOf('BTC')));
     }
   }
-  console.log(coins);
-  coinmarketcap(coins).then((dataToWrite) => {
-    fs.writeFile('../constants/coin-dictionary.js', `module.exports =${JSON.stringify(dataToWrite)}`);
-  });
+  cryptocompare(coins);
 });
 
 binance();
