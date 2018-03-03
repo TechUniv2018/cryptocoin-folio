@@ -13,17 +13,17 @@ describe('testing server', () => {
     });
   });
 
-  test('Response should contain 10 cryptocoins data', (done) => {
+  test('Response should contain 50 cryptocoins data', (done) => {
     const options = {
       method: 'GET',
       url: '/prices',
     };
     const coinsCount = (payload) => {
-      const coins = Object.keys(JSON.parse(payload));
-      return coins.length;
+      const coinsLength = (JSON.parse(payload)).length;
+      return coinsLength;
     };
     Server.inject(options, (response) => {
-      expect(coinsCount(response.payload)).toBe(10);
+      expect(coinsCount(response.payload)).toBe(50);
       done();
     });
   });
@@ -40,17 +40,17 @@ describe('testing server', () => {
       let countForVolume = 0;
       let countForChange = 0;
       for (let i = 0; i < coins.length; i += 1) {
-        if (payloadJson[coins[i]].Price) {
+        if (payloadJson[i].Price) {
           countForPrice += 1;
         }
-        if (payloadJson[coins[i]].Volume) {
+        if ((payloadJson[i].Volume) !== null) {
           countForVolume += 1;
         }
-        if (payloadJson[coins[i]].Change) {
+        if ((payloadJson[i].Change) !== null) {
           countForChange += 1;
         }
       }
-      if (countForChange === 10 && countForPrice === 10 && countForVolume === 10) {
+      if (countForChange === 50 && countForPrice === 50 && countForVolume === 50) {
         return true;
       }
       return false;
