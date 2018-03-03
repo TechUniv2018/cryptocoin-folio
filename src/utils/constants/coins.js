@@ -1,3 +1,2 @@
-const coins = ['BTC', 'ETH', 'XRP', 'LTC', 'NEO', 'XMR', 'ZEC', 'BCH', 'BTS', 'ETC'];
-
+const coins = ['BTC', 'ETH', 'XRP', 'LTC', 'NEO', 'ADA', 'XLM', 'EOS', 'XMR', 'DASH', 'TRX', 'ETC', 'VEN', 'LSK', 'QTUM', 'BTG', 'OMG', 'ICX', 'ZEC', 'BNB', 'STEEM', 'DGD', 'XVG', 'STRAT', 'PPT', 'WAVES', 'BTS', 'SNT', 'AE', 'KMD', 'ZRX', 'WTC', 'ARK', 'HSR', 'BAT', 'GAS', 'PIVX', 'AION', 'LRC', 'ELF', 'FUN', 'SALT', 'KNC', 'XZC', 'GXS', 'IOST', 'LINK', 'ICN', 'POWR', 'NEBL'];
 module.exports = coins;
