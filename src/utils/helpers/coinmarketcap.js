@@ -38,8 +38,8 @@ const coinmarketcap = coins => axios.get('https://api.coinmarketcap.com/v1/ticke
 const cryptocompare = coins => axios.get('https://www.cryptocompare.com/api/data/coinlist/').then((data) => {
   const cryptoCoins = Object.keys(data.data.Data);
   const sameCoins = [];
-  for (let i = 0; i < coins.length; i++) {
-    for (let j = 0; j < cryptoCoins.length; j++) {
+  for (let i = 0; i < coins.length; i += 1) {
+    for (let j = 0; j < cryptoCoins.length; j += 1) {
       if (cryptoCoins[j] === coins[i]) {
         sameCoins.push(coins[i]);
       }
@@ -47,6 +47,10 @@ const cryptocompare = coins => axios.get('https://www.cryptocompare.com/api/data
   }
   coinmarketcap(sameCoins).then((dataToWrite) => {
     fs.writeFile('../constants/coin-dictionary.js', `module.exports =${JSON.stringify(dataToWrite)}`);
+    const coinSymbolArray = Object.keys(dataToWrite);
+    const stringCoinSymbolArray = coinSymbolArray.map(item => JSON.stringify(item));
+    fs.writeFile('../constants/coins.js', `const coins = [${stringCoinSymbolArray}];
+module.exports = coins;`);
   });
 });
 
