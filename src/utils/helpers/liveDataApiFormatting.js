@@ -1,4 +1,4 @@
-const coinNames = require('../constants/coin-dictionary');
+const { namesDict } = require('../constants/');
 
 const formatFunction = (uneditedData) => {
   // console.log(uneditedData);
@@ -19,7 +19,7 @@ const formatFunction = (uneditedData) => {
     const coinChange = Number(coinData.CHANGEPCT24HOUR);
     editedData.push({
       Symbol: coin,
-      Name: coinNames[coin],
+      Name: namesDict[coin],
       Price: coinValue,
       Volume: coinVolume,
       Change: coinChange,
