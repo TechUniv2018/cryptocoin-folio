@@ -1,8 +1,8 @@
 
 module.exports = (sequelize, DataTypes) => {
   const coins = sequelize.define('coins', {
-    symbol: DataTypes.STRING,
-    name: DataTypes.STRING,
+    symbol: { type: DataTypes.STRING, unique: true },
+    name: { type: DataTypes.STRING, unique: true },
   }, {
     classMethods: {
       associate(models) {
