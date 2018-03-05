@@ -12,6 +12,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    queryInterface.removeConstraint('users', 'usersEmailUnique');
+    queryInterface.removeConstraint('coins', 'coinsNameUnique');
+    queryInterface.removeConstraint('coins', 'coinsSymbolUnique');
   },
 };
