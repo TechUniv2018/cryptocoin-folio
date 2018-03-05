@@ -29,22 +29,68 @@ describe('test coin table', () => {
     });
   });
 
-  test('delete coin from coins table', (done) => {
-    Models.coins.destroy({ where: { symbol: 'BTC' }, cascade: true }).then(() => {
-      Models.coins.findAll().then((result) => {
-        expect(result).toEqual([]);
+  test('duplicate coin with same symbol should fail', (done) => {
+    const coinObj1 = {
+      symbol: 'BTC',
+      name: 'Bitcoin',
+    };
+
+    const coinObj2 = {
+      symbol: 'BTC',
+      name: 'Bit Coin',
+    };
+
+    Models.coins.create(coinObj1).then(() => {
+      Models.coins.create(coinObj2).then().catch((e) => {
+        expect(e.name).toBe('SequelizeUniqueConstraintError');
         done();
+      });
+      done();
+    });
+  });
+
+  test('duplicate coin with same name should fail', (done) => {
+    const coinObj1 = {
+      symbol: 'BTC',
+      name: 'Bitcoin',
+    };
+
+    const coinObj2 = {
+      symbol: 'BTCC',
+      name: 'Bitcoin',
+    };
+
+    Models.coins.create(coinObj1).then(() => {
+      Models.coins.create(coinObj2).then().catch((e) => {
+        expect(e.name).toBe('SequelizeUniqueConstraintError');
+        done();
+      });
+      done();
+    });
+  });
+
+  test('delete coin from coins table', (done) => {
+    const coinObj = {
+      symbol: 'BTC',
+      name: 'Bitcoin',
+    };
+    Models.coins.create(coinObj).then(() => {
+      Models.coins.destroy({ where: { symbol: 'BTC' }, cascade: true }).then(() => {
+        Models.coins.findAll().then((result) => {
+          expect(result).toEqual([]);
+          done();
+        });
       });
     });
   });
 
-  beforeAll((done) => {
+  beforeEach((done) => {
     Promise.all(cleanUpAllTables()).then(() => {
       done();
     });
   });
 
-  afterAll((done) => {
+  afterEach((done) => {
     Promise.all(cleanUpAllTables()).then(() => {
       done();
     });
