@@ -3,7 +3,7 @@ const createCoin = require('../../../src/utils/helpers/createCoin');
 const createTransaction = require('../../../src/utils/helpers/createTransaction');
 const Models = require('../../../models/');
 
-describe('Test for create coin function', () => {
+describe('Test for create transaction function', () => {
   const transaction = {};
   beforeAll((done) => {
     const user = {
@@ -15,16 +15,27 @@ describe('Test for create coin function', () => {
     };
     createUser(user)
       .then((details) => {
-        transaction.userId = details.id;
-        const coin = {
-          symbol: '$',
-          name: 'bitcoin',
+        transaction.toId = details.id;
+        const admin = {
+          fullName: 'admin',
+          email: 'admin@admin.com',
+          password: 'sample',
+          confirmPassword: 'sample',
+          mobileNumbe: 9876543210,
         };
-        createCoin(coin)
-          .then((result) => {
-            transaction.coinId = result.id;
-          })
-          .then(() => done());
+        createUser(admin)
+          .then((adminDetails) => {
+            transaction.fromId = adminDetails.id;
+            const coin = {
+              symbol: '$',
+              name: 'bitcoin',
+            };
+            createCoin(coin)
+              .then((result) => {
+                transaction.coinId = result.id;
+              })
+              .then(() => done());
+          });
       });
   });
   afterAll((done) => {
@@ -54,7 +65,7 @@ describe('Test for create coin function', () => {
     };
     createTransaction(options)
       .then((message) => {
-        expect(Object.keys(message).sort()).toEqual(['id', 'coinId', 'userId', 'price', 'quantity', 'createdAt', 'updatedAt'].sort());
+        expect(Object.keys(message).sort()).toEqual(['id', 'coinId', 'toId', 'fromId', 'price', 'quantity', 'createdAt', 'updatedAt'].sort());
         done();
       });
   });

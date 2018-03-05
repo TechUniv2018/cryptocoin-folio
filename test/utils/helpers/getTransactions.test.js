@@ -19,11 +19,23 @@ describe('Test for getTransactions helper function', () => {
     };
     createUser(options)
       .then((result) => {
-        details.userId = result.id;
-        return {
-          name: 'bitcoin',
-          symbol: '$',
+        details.toId = result.id;
+        const admin = {
+          fullName: 'admin',
+          email: 'admin@admin.com',
+          password: 'sample',
+          confirmPassword: 'sample',
+          mobileNumbe: 9876543210,
+          id: 0,
         };
+        createUser(admin)
+          .then((result1) => {
+            details.fromId = result1.id;
+            return {
+              name: 'bitcoin',
+              symbol: '$',
+            };
+          });
       })
       .then(result => createCoin(result)
         .then((message) => {
@@ -35,8 +47,8 @@ describe('Test for getTransactions helper function', () => {
       });
   });
   test('Should return user transactions', (done) => {
-    getTransactions(details.userId).then((result) => {
-      expect(Object.keys(result[0]).sort()).toEqual(['coinId', 'createdAt', 'id', 'price', 'quantity', 'updatedAt', 'userId'].sort());
+    getTransactions(details.toId).then((result) => {
+      expect(Object.keys(result[0]).sort()).toEqual(['coinId', 'createdAt', 'id', 'price', 'quantity', 'updatedAt', 'fromId', 'toId'].sort());
       done();
     });
   });

@@ -3,7 +3,7 @@ const Models = require('../../../models');
 const transactions = userId =>
   Models.transactions.findAll({
     where: {
-      userId,
+      [Models.Sequelize.Op.or]: [{ toId: userId }, { fromId: userId }],
     },
   })
     .then(result => result.map(eachtransaction => eachtransaction.dataValues))

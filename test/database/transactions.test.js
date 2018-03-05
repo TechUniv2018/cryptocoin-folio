@@ -16,7 +16,8 @@ describe('test transaction table', () => {
   test('insert transaction into transaction table should fail with Sequelize Foreign Key Constraint Error', (done) => {
     const transactionObject = {
       coinId: 1,
-      userId: 1,
+      toId: 1,
+      fromId: 0,
       price: 321.3213,
       quantity: 10.12,
     };
@@ -24,6 +25,31 @@ describe('test transaction table', () => {
     Models.transactions.create(transactionObject).then().catch((e) => {
       expect(e.name).toBe('SequelizeForeignKeyConstraintError');
       done();
+    });
+  });
+
+  test('insert transaction into transaction table should fail with Sequelize Foreign Key Constraint Error - from user does not exit', (done) => {
+    const userObject = {
+      fullName: 'Jack Mark',
+      email: 'jackmark@alibababa.com',
+      password: 'sample',
+      confirmPassword: 'sample',
+      mobileNumbe: 9876543210,
+    };
+
+    Models.users.create(userObject).then((userResult) => {
+      const transactionObject = {
+        coinId: 1,
+        toId: userResult.dataValues.id,
+        fromId: 0,
+        price: 321.3213,
+        quantity: 10.12,
+      };
+
+      Models.transactions.create(transactionObject).then().catch((e) => {
+        expect(e.name).toBe('SequelizeForeignKeyConstraintError');
+        done();
+      });
     });
   });
 
@@ -37,21 +63,31 @@ describe('test transaction table', () => {
     };
 
     Models.users.create(userObject).then((userResult) => {
-      const transactionObject = {
-        coinId: 1,
-        userId: userResult.dataValues.id,
-        price: 321.3213,
-        quantity: 10.12,
+      const adminObject = {
+        fullName: 'admin',
+        email: 'admin@admin',
+        password: 'sample',
+        confirmPassword: 'sample',
+        mobileNumbe: 9876543210,
+        id: 0,
       };
-
-      Models.transactions.create(transactionObject).then().catch((e) => {
-        expect(e.name).toBe('SequelizeForeignKeyConstraintError');
-        done();
+      Models.users.create(adminObject).then((adminResult) => {
+        const transactionObject = {
+          coinId: 1,
+          toId: userResult.dataValues.id,
+          fromId: adminResult.dataValues.id,
+          price: 321.3213,
+          quantity: 10.12,
+        };
+        Models.transactions.create(transactionObject).then().catch((e) => {
+          expect(e.name).toBe('SequelizeForeignKeyConstraintError');
+          done();
+        });
       });
     });
   });
 
-  test('insert transaction into transaction table should fail with Sequelize Foreign Key Constraint Error - User does not exist', (done) => {
+  test('insert transaction into transaction table should fail with Sequelize Foreign Key Constraint Error - To  and from User does not exist', (done) => {
     const coinObj = {
       symbol: 'BTC',
       name: 'Bitcoin',
@@ -60,7 +96,8 @@ describe('test transaction table', () => {
     Models.coins.create(coinObj).then((coinResult) => {
       const transactionObject = {
         coinId: coinResult.dataValues.id,
-        userId: 1,
+        toId: 1,
+        fromId: 0,
         price: 321.3213,
         quantity: 10.12,
       };
@@ -78,6 +115,15 @@ describe('test transaction table', () => {
       name: 'Bitcoin',
     };
 
+    const adminObject = {
+      fullName: 'admin',
+      email: 'admin@admin',
+      password: 'sample',
+      confirmPassword: 'sample',
+      mobileNumbe: 9876543210,
+      id: 0,
+    };
+
     const userObject = {
       fullName: 'Jack Mark',
       email: 'jackmark@alibababa.com',
@@ -87,24 +133,28 @@ describe('test transaction table', () => {
     };
 
     Models.coins.create(coinObj).then((coinResult) => {
-      Models.users.create(userObject).then((userResult) => {
-        const transactionObject = {
-          coinId: coinResult.dataValues.id,
-          userId: userResult.dataValues.id,
-          price: 321.3213,
-          quantity: 10.12,
-        };
-
-        Models.transactions.create(transactionObject).then((resultTransaction) => {
-          const transactionResultObject = {
+      Models.users.create(adminObject).then((adminResult) => {
+        Models.users.create(userObject).then((userResult) => {
+          const transactionObject = {
             coinId: coinResult.dataValues.id,
-            userId: userResult.dataValues.id,
-            price: resultTransaction.dataValues.price,
-            quantity: resultTransaction.dataValues.quantity,
+            toId: userResult.dataValues.id,
+            fromId: adminResult.dataValues.id,
+            price: 321.3213,
+            quantity: 10.12,
           };
 
-          expect(transactionResultObject).toEqual(transactionObject);
-          done();
+          Models.transactions.create(transactionObject).then((resultTransaction) => {
+            const transactionResultObject = {
+              coinId: coinResult.dataValues.id,
+              toId: userResult.dataValues.id,
+              fromId: adminResult.dataValues.id,
+              price: resultTransaction.dataValues.price,
+              quantity: resultTransaction.dataValues.quantity,
+            };
+
+            expect(transactionResultObject).toEqual(transactionObject);
+            done();
+          });
         });
       });
     });
