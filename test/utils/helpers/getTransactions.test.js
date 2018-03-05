@@ -2,6 +2,7 @@ const getTransactions = require('../../../src/utils/helpers/getTransactions');
 const createUser = require('../../../src/utils/helpers/createNewUser');
 const createCoin = require('../../../src/utils/helpers/createCoin');
 const createTransaction = require('../../../src/utils/helpers/createTransaction');
+const Models = require('../../../models');
 
 describe('Test for getTransactions helper function', () => {
   const details = {
@@ -44,6 +45,14 @@ describe('Test for getTransactions helper function', () => {
         createTransaction(details)
           .then(() => done());
       });
+  });
+  afterAll((done) => {
+    Models.transactions.destroy({ cascade: true, truncate: true })
+      .then(() =>
+        Models.coins.destroy({ cascade: true, truncate: true }))
+      .then(() =>
+        Models.users.destroy({ cascade: true, truncate: true }))
+      .then(() => done());
   });
   test('Should return user transactions', (done) => {
     getTransactions(details.toId).then((result) => {

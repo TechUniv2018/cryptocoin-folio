@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const createUser = require('../../src/utils/helpers/createNewUser');
 const createCoin = require('../../src/utils/helpers/createCoin');
 const createTransaction = require('../../src/utils/helpers/createTransaction');
-
+const Models = require('../../models');
 
 describe('Test for portfolio API', () => {
   let token;
@@ -49,6 +49,14 @@ describe('Test for portfolio API', () => {
           .then(() => done());
       });
   });
+  afterAll((done) => {
+    Models.transactions.destroy({ cascade: true, truncate: true })
+      .then(() =>
+        Models.coins.destroy({ cascade: true, truncate: true }))
+      .then(() =>
+        Models.users.destroy({ cascade: true, truncate: true }))
+      .then(() => done());
+  });
   test('Should return object', (done) => {
     const options = {
       method: 'GET',
@@ -72,8 +80,8 @@ describe('Test for portfolio API', () => {
       },
     };
     // console.log(options);
-    Server.inject(options, (response) => {
-      expect(response.payload).toEqual('[{"id":1,"fromId":2,"toId":1,"coinId":1,"price":100,"quantity":1000}]');
+    Server.inject(options, (result) => {
+      expect(Object.keys(JSON.parse(result.payload)[0]).sort()).toEqual(['coinId', 'id', 'price', 'quantity', 'fromId', 'toId'].sort());
       done();
     });
   });
