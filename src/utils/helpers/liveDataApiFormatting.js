@@ -1,6 +1,7 @@
-const coinNames = require('../constants/index').namesDict;
+const { namesDict } = require('../constants/');
 
 const formatFunction = (uneditedData) => {
+  // console.log(uneditedData);
   let uneditedDataJson;
   try {
     uneditedDataJson = JSON.parse(uneditedData);
@@ -18,7 +19,7 @@ const formatFunction = (uneditedData) => {
     const coinChange = Number(coinData.CHANGEPCT24HOUR);
     editedData.push({
       Symbol: coin,
-      Name: coinNames[coin],
+      Name: namesDict[coin],
       Price: coinValue,
       Volume: coinVolume,
       Change: coinChange,
