@@ -21,19 +21,6 @@ const coinmarketcap = coins => axios.get('https://api.coinmarketcap.com/v1/ticke
   }
   return obj;
 });
-//   const obj = dataArray.reduce((accumulator, singleData) => {
-//     const newCoins = coins.filter((coin) => {
-//       if (coin === singleData.symbol) {
-//         console.log(singleData.name);
-//         return true;
-//       }
-//       return false;
-//     });
-//     console.log(newCoins);
-//     return {};
-//   });
-// });
-
 
 const cryptocompare = coins => axios.get('https://www.cryptocompare.com/api/data/coinlist/').then((data) => {
   const cryptoCoins = Object.keys(data.data.Data);
