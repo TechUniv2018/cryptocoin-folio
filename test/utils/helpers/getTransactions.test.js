@@ -2,7 +2,6 @@ const getTransactions = require('../../../src/utils/helpers/getTransactions');
 const createUser = require('../../../src/utils/helpers/createNewUser');
 const createCoin = require('../../../src/utils/helpers/createCoin');
 const createTransaction = require('../../../src/utils/helpers/createTransaction');
-const Models = require('../../../models');
 
 describe('Test for getTransactions helper function', () => {
   const details = {
