@@ -11,7 +11,6 @@ module.exports = {
       coin.updatedAt = new Date();
       coinArray.push(coin);
     });
-    console.log(coinArray);
     return queryInterface.bulkInsert('coins', coinArray).then(console.log, console.log).catch(e => console.log(e));
   },
 

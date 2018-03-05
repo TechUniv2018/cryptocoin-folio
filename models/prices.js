@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         prices.belongsTo(models.coins);
       },
     },
+    indexes: [{ unique: true, fields: ['timeStamp', 'coinId'] }],
   });
   return prices;
 };
