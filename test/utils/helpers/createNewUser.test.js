@@ -2,6 +2,14 @@ const createUser = require('../../../src/utils/helpers/createNewUser');
 const Models = require('../../../models/');
 
 describe('Test for signup API with valid data', () => {
+  beforeAll((done) => {
+    Models.users.destroy({
+      truncate: true,
+      cascade: true,
+    }).then(() => {
+      done();
+    }).catch(console.log);
+  });
   afterAll((done) => {
     Models.users.destroy({
       truncate: true,
@@ -20,7 +28,7 @@ describe('Test for signup API with valid data', () => {
     };
     createUser(options)
       .then((message) => {
-        expect(message).toBe('OK');
+        expect(typeof message).toBe('object');
         done();
       });
   });
