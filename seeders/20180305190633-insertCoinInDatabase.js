@@ -1,18 +1,7 @@
-const coinObj = require('./../src/utils/constants/coin-dictionary');
+const coinsArray = require('./../src/utils/helpers/getCoinsArrayforSeed');
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    const coinArray = [];
-    Object.keys(coinObj).forEach((key) => {
-      const coin = {};
-      coin.symbol = key;
-      coin.name = coinObj[key];
-      coin.createdAt = new Date();
-      coin.updatedAt = new Date();
-      coinArray.push(coin);
-    });
-    return queryInterface.bulkInsert('coins', coinArray).then(console.log, console.log).catch(e => console.log(e));
-  },
+  up: (queryInterface, Sequelize) => queryInterface.bulkInsert('coins', coinsArray()).then(console.log, console.log).catch(e => console.log(e)),
 
   down: (queryInterface, Sequelize) => queryInterface.bulkDelete('coins', null, {}),
 };
