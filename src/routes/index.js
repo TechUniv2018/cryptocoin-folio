@@ -4,6 +4,7 @@ const liveGraph = require('./liveGraph');
 const prices = require('./prices');
 const portfolio = require('./portfolio');
 const orders = require('./orders');
+const historicalData = require('./historicalData');
 
 module.exports = [{
   path: '/',
