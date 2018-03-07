@@ -1,3 +1,7 @@
+// NOTE: Running this file again would result in changing the coins being used.
+// This change would not be in par with the historical data. Hence use it only once.
+
+
 const axios = require('axios');
 const fs = require('fs');
 
