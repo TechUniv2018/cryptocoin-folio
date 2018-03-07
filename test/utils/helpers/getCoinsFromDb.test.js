@@ -17,6 +17,13 @@ describe('', () => {
     }));
   });
 
+  test('array object should contain id, symbol, name, createdAt and updatedAt', (done) => {
+    expect(getCoinsFromDb().then((result) => {
+      expect(Object.keys(result[0])).toEqual(['id', 'symbol', 'name', 'createdAt', 'updatedAt']);
+      done();
+    }));
+  });
+
   beforeAll((done) => {
     Models.coins.destroy({ cascade: true, truncate: true }).then(() => {
       Models.coins.bulkCreate(coinsArray()).then(() => {
