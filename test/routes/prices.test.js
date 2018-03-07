@@ -40,13 +40,13 @@ describe('testing server', () => {
       let countForVolume = 0;
       let countForChange = 0;
       for (let i = 0; i < coins.length; i += 1) {
-        if (payloadJson[i].Price) {
+        if (payloadJson[coins[i]].Price !== undefined) {
           countForPrice += 1;
         }
-        if ((payloadJson[i].Volume) !== null) {
+        if (payloadJson[coins[i]].Volume !== undefined) {
           countForVolume += 1;
         }
-        if ((payloadJson[i].Change) !== null) {
+        if (payloadJson[coins[i]].Change !== undefined) {
           countForChange += 1;
         }
       }
