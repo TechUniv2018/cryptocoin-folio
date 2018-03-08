@@ -56,7 +56,7 @@ describe('', () => {
 
     const coinsHistoricalDataPromise = Promise.all(getHistoricalDataFromAPI(coinsArray));
     coinsHistoricalDataPromise.then((result) => {
-      expect(Object.keys(result[0].result)).toEqual(['result', 'coinId']);
+      expect(Object.keys(result[0])).toEqual(['result', 'coinId']);
       done();
     });
   });
@@ -79,6 +79,28 @@ describe('', () => {
     const coinsHistoricalDataPromise = Promise.all(getHistoricalDataFromAPI(coinsArray));
     coinsHistoricalDataPromise.then((a) => {
       expect(Object.keys(a[0].result)).toEqual(['Response', 'Type', 'Aggregated', 'Data', 'TimeTo', 'TimeFrom', 'FirstValueInArray', 'ConversionType']);
+      done();
+    });
+  });
+
+  test('result[0].result.Data should contain all required data', (done) => {
+    const coinsArray = [{
+      id: 64,
+      symbol: 'BTC',
+      name: 'Bitcoin',
+      createdAt: '2018-03-07T17:16:31.539Z',
+      updatedAt: '2018-03-07T17:16:31.539Z',
+    }, {
+      id: 115,
+      symbol: 'ETH',
+      name: 'Ethereum',
+      createdAt: '2018-03-07T17:25:12.765Z',
+      updatedAt: '2018-03-07T17:25:12.765Z',
+    }];
+
+    const coinsHistoricalDataPromise = Promise.all(getHistoricalDataFromAPI(coinsArray));
+    coinsHistoricalDataPromise.then((a) => {
+      expect(Object.keys(a[0].result.Data[0]).sort()).toEqual(['time', 'close', 'high', 'low', 'open', 'volumefrom', 'volumeto'].sort());
       done();
     });
   });
