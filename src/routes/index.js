@@ -12,4 +12,4 @@ module.exports = [{
   handler: (request, reply) => {
     reply('Hello world!');
   },
-}].concat(signup, prices, liveGraph, login, orders, portfolio);
+}].concat(signup, prices, liveGraph, login, orders, portfolio, historicalData);
