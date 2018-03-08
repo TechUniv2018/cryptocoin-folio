@@ -13,7 +13,13 @@ module.exports = (coinsArray) => {
       },
     };
     console.log(options);
-    priceRequestPromisesArray.push(rp(options).then(result => ({ result: JSON.parse(result), coinId: coinObj.id })));
+    priceRequestPromisesArray
+      .push(rp(options)
+        .then(result => (
+          {
+            result: JSON.parse(result),
+            coinId: coinObj.id,
+          })));
   });
   return priceRequestPromisesArray;
 };
