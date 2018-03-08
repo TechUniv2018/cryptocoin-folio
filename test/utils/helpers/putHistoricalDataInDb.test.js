@@ -3,13 +3,24 @@ const putHistoricalDataInDb = require('./../../../src/utils/helpers/putHistorica
 const fs = require('fs');
 
 describe('', () => {
-  let coinPriceData = null;
   test('price table should contain 4 price', (done) => {
-    fs.readFile('coinPriceDataTest.json', (err, data) => {
-      coinPriceData = data;
+    fs.readFile('coinPriceDataTest1.json', (err, data) => {
+      const coinPriceData = data;
       Promise.all(putHistoricalDataInDb(JSON.parse(coinPriceData))).then(() => {
         Models.prices.findAll().then((result) => {
           expect(result.length).toEqual(4);
+          done();
+        });
+      });
+    });
+  });
+
+  test('price table should contain 4 price', (done) => {
+    fs.readFile('coinPriceDataTest2.json', (err, data) => {
+      const coinPriceData = data;
+      Promise.all(putHistoricalDataInDb(JSON.parse(coinPriceData))).then(() => {
+        Models.prices.findAll().then((result) => {
+          expect(result.length).toEqual(3);
           done();
         });
       });
