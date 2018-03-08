@@ -6,6 +6,12 @@ module.exports = () => ({
     host: process.env.CRYPTOCOIN_DB_DEV_HOST,
     dialect: 'postgres',
     port: process.env.CRYPTOCOIN_DB_DEV_PORT,
+    pool: {
+      max: 10,
+      min: 0,
+      acquire: 50000,
+      idle: 10000,
+    },
   },
   test: {
     username: process.env.CRYPTOCOIN_DB_TEST_USER,
