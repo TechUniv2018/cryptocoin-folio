@@ -43,5 +43,19 @@ describe('testing whether the addOrRemoveCoin function works or not', () => {
       done();
     });
   });
+  test('checking whether transaction is being inserted with the right price', (done) => {
+    addOrRemoveCoins(2, 'BTC', 12345, 23).then((result) => {
+      expect(result.price).toBe(12345);
+    }).then(() => {
+      done();
+    });
+  });
+  test('checking whether transaction is being inserted with the right quantity', (done) => {
+    addOrRemoveCoins(2, 'BTC', 12345, 23).then((result) => {
+      expect(result.quantity).toBe(23);
+    }).then(() => {
+      done();
+    });
+  });
 });
 
