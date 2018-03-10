@@ -29,16 +29,16 @@ describe('testing whether the addOrRemoveCoin function works or not', () => {
     });
   });
 
-  test('checking whether transaction is being inserted with the right coin id', (done) => {
+  test('checking whether transaction is being inserted with the right fromId', (done) => {
     addOrRemoveCoins(2, 'BTC', 12345, 23).then((result) => {
-      expect(result.coinId).toBe(1);
+      expect(result.fromId).toBe(1);
     }).then(() => {
       done();
     });
   });
-  test('checking whether transaction is being inserted with the right fromId', (done) => {
+  test('checking whether transaction is being inserted with the right toId', (done) => {
     addOrRemoveCoins(2, 'BTC', 12345, 23).then((result) => {
-      expect(result.fromId).toBe(1);
+      expect(result.toId).toBe(2);
     }).then(() => {
       done();
     });
