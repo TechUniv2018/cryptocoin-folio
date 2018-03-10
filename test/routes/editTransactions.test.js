@@ -5,7 +5,7 @@ const getCoinArray = require('../../src/utils/helpers/getCoinsArrayforSeed');
 const Models = require('../../models');
 const addOrRemoveCoins = require('../../src/utils/helpers/addOrRemoveCoins');
 
-describe('Test for portfolio API', () => {
+describe('Test for editTransaction api', () => {
   let token;
   let transactionid;
   beforeAll((done) => {
@@ -48,11 +48,6 @@ describe('Test for portfolio API', () => {
     const options = {
       url: `/editTransaction?delete=${transactionid}`,
       method: 'POST',
-      payload: {
-        coin: 'LTC',
-        quantity: 4,
-        price: 1000,
-      },
       headers: {
         authtoken: token,
       },
@@ -64,9 +59,23 @@ describe('Test for portfolio API', () => {
       done();
     });
   });
-  it('checking if the insertion has happened or not ', (done) => {
+  it('checking if the transaction is being rejected when given arbitrary id or not ', (done) => {
     const options = {
       url: '/editTransaction?delete=1289',
+      method: 'POST',
+      headers: {
+        authtoken: token,
+      },
+    };
+    server.inject(options).then((response) => {
+      expect(response.statusCode).toBe(409);
+      expect(response.result).toBe('transaction deleting failed');
+      done();
+    });
+  });
+  it('checking if the transaction is being edited or not', (done) => {
+    const options = {
+      url: `/editTransaction?edit=${transactionid}`,
       method: 'POST',
       payload: {
         coin: 'LTC',
@@ -78,8 +87,8 @@ describe('Test for portfolio API', () => {
       },
     };
     server.inject(options).then((response) => {
-      expect(response.statusCode).toBe(409);
-      expect(response.result).toBe('transaction deleting failed');
+      expect(response.statusCode).toBe(200);
+      expect(response.result).toBe('transaction edited');
       done();
     });
   });

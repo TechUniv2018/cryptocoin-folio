@@ -27,7 +27,7 @@ module.exports = {
         const { coinId } = request.payload;
         editTransaction(userId, queryObject[typeOfRequest[0]], price, quantity, coinId)
           .then((reply) => {
-            if (reply === 'transaction edited') { response(reply).code(204); } else {
+            if (reply === 'transaction edited') { response(reply).code(200); } else {
               response(reply).code(409);
             }
           });
