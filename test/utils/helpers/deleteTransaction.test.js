@@ -40,5 +40,11 @@ describe('checking if the delete is done or not', () => {
       done();
     });
   });
+  test('deleting the transaction present', (done) => {
+    deleteTransaction(2, 300).then((result) => {
+      expect(result).toBe('transaction deleting failed');
+      done();
+    });
+  });
 });
 
