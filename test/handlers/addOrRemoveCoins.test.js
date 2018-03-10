@@ -36,5 +36,12 @@ describe('testing whether the addOrRemoveCoin function works or not', () => {
       done();
     });
   });
+  test('checking whether transaction is being inserted with the right fromId', (done) => {
+    addOrRemoveCoins(2, 'BTC', 12345, 23).then((result) => {
+      expect(result.fromId).toBe(1);
+    }).then(() => {
+      done();
+    });
+  });
 });
 
