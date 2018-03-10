@@ -64,4 +64,23 @@ describe('Test for portfolio API', () => {
       done();
     });
   });
+  it('checking if the insertion has happened or not ', (done) => {
+    const options = {
+      url: '/editTransaction?delete=1289',
+      method: 'POST',
+      payload: {
+        coin: 'LTC',
+        quantity: 4,
+        price: 1000,
+      },
+      headers: {
+        authtoken: token,
+      },
+    };
+    server.inject(options).then((response) => {
+      expect(response.statusCode).toBe(409);
+      expect(response.result).toBe('transaction deleting failed');
+      done();
+    });
+  });
 });
