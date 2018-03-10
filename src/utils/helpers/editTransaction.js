@@ -1,6 +1,6 @@
 const Models = require('../../../models');
 
-const editTransaction = (userId, transactionId, quantity, price, coinId) =>
+const editTransaction = (userId, transactionId, price, quantity, coinId) =>
   Models.transactions.upsert({
     id: transactionId,
     toId: userId,

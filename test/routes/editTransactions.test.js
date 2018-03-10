@@ -73,7 +73,7 @@ describe('Test for editTransaction api', () => {
       done();
     });
   });
-  it('checking if the transaction is being edited or not', (done) => {
+  it('checking if the transaction is being edited or not with status code and response', (done) => {
     const options = {
       url: `/editTransaction?edit=${transactionid}`,
       method: 'POST',
@@ -90,6 +90,57 @@ describe('Test for editTransaction api', () => {
       expect(response.statusCode).toBe(200);
       expect(response.result).toBe('transaction edited');
       done();
+    });
+  });
+  it('checking if the transaction is being edited or not by checking database', (done) => {
+    const options = {
+      url: `/editTransaction?edit=${transactionid}`,
+      method: 'POST',
+      payload: {
+        coin: 'LTC',
+        quantity: 4,
+        price: 1000,
+      },
+      headers: {
+        authtoken: token,
+      },
+    };
+    server.inject(options).then(() => Models.transactions.findOne({
+      where: {
+        id: transactionid,
+      },
+    }).then((result) => {
+      expect(result.quantity).toBe(4);
+      expect(result.price).toBe(1000);
+    }).then(() => done()));
+  });
+  it('checking if the transaction is being edited or not by checking coinId', (done) => {
+    let resultCoin;
+    const options = {
+      url: `/editTransaction?edit=${transactionid}`,
+      method: 'POST',
+      payload: {
+        coin: 'LTC',
+        quantity: 4,
+        price: 1000,
+      },
+      headers: {
+        authtoken: token,
+      },
+    };
+    server.inject(options).then(() => Models.coins.findAll({
+      where: {
+        symbol: 'LTC',
+      },
+    })).then((result) => {
+      resultCoin = result;
+      return Models.transactions.findAll({
+        where: {
+          id: transactionid,
+        },
+      }).then((resultTransaction) => {
+        expect(resultCoin.id).toBe(resultTransaction.coinId);
+      }).then(() => done());
     });
   });
 });
