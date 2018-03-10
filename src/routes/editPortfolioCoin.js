@@ -1,5 +1,5 @@
 const getJWTpayload = require('../utils/helpers/getJWTpayload');
-const addOrRemoveCoin = require('../handlers/addOrRemoveCoins');
+const addOrRemoveCoin = require('../../src/utils/helpers/addOrRemoveCoins');
 
 module.exports = [{
   path: '/editPortfolioCoin',
@@ -7,7 +7,7 @@ module.exports = [{
   handler: (request, reply) => {
     const userData = getJWTpayload(request);
     if (userData.message === 'token expired') {
-      Response({ message: 'Token Expired' }).code(401);
+      reply({ message: 'Token Expired' }).code(401);
     } else {
       const { userId } = userData;
       const { coin } = request.payload;
