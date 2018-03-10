@@ -62,4 +62,24 @@ describe('Test for portfolio API', () => {
       done();
     });
   });
+  it('checking if the insertion has happened or not ', (done) => {
+    const options = {
+      url: '/editPortfolioCoin',
+      method: 'POST',
+      payload: {
+        coin: 'LTC',
+        quantity: 4,
+        price: 1000,
+      },
+      headers: {
+        authtoken: token,
+      },
+    };
+    server.inject(options).then((response) => {
+      expect(response.statusCode).toBe(201);
+      Models.transactions.findAll({ where: { fromId: 1, toId: 10 } }).then((result) => {
+        expect(result.length).toBe(1);
+      }).then(() => done());
+    });
+  });
 });
