@@ -31,5 +31,10 @@ describe('', () => {
       });
     });
   });
+  afterAll((done) => {
+    Models.coins.destroy({ cascade: true, truncate: true }).then(() => {
+      done();
+    });
+  });
 });
 

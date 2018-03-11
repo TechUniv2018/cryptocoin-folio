@@ -4,6 +4,8 @@ const liveGraph = require('./liveGraph');
 const prices = require('./prices');
 const portfolio = require('./portfolio');
 const orders = require('./orders');
+const editPortfolioCoin = require('./editPortfolioCoin');
+const editTransactions = require('./editTransactions');
 const twitter = require('./twitter');
 
 module.exports = [{
@@ -12,4 +14,4 @@ module.exports = [{
   handler: (request, reply) => {
     reply('Hello world!');
   },
-}].concat(signup, prices, liveGraph, login, orders, portfolio, twitter);
+}].concat(signup, prices, liveGraph, login, orders, portfolio, editPortfolioCoin, editTransactions, twitter);
