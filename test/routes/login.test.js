@@ -68,7 +68,7 @@ describe('Test for login API with valid data', () => {
       },
     };
     Server.inject(options, (response) => {
-      expect(response.result.message).toBe('User Not Registered');
+      expect(response.result.message).toBe('Invalid Request');
       done();
     });
   });
@@ -82,7 +82,7 @@ describe('Test for login API with valid data', () => {
       },
     };
     Server.inject(options, (response) => {
-      expect(response.result.message).toBe('Invalid Password');
+      expect(response.result.message).toBe('Invalid Request');
       done();
     });
   });
