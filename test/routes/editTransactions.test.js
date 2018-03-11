@@ -55,8 +55,30 @@ describe('Test for editTransaction api', () => {
     server.inject(options).then((response) => {
       expect(response.statusCode).toBe(200);
       expect(response.result).toBe('transaction deleted');
-      console.log(response);
       done();
+    });
+  });
+  it('checking if the deleting is done from the database', (done) => {
+    addOrRemoveCoins(10, 'BTC', 12345, 23).then((record) => {
+      const options = {
+        url: `/editTransaction?delete=${record.id}`,
+        method: 'POST',
+        headers: {
+          authtoken: token,
+        },
+      };
+      server.inject(options).then((response) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.result).toBe('transaction deleted');
+        Models.transactions.findAll({
+          where: {
+            id: record.id,
+          },
+        }).then((data) => {
+          expect(data.length).toBe(0);
+          done();
+        });
+      });
     });
   });
   it('checking if the transaction is being rejected when given arbitrary id or not ', (done) => {
