@@ -12,7 +12,8 @@ module.exports = {
     } else {
       const { userId } = userData;
       const userTransactions = getTransactions(userId);
-      Response(userTransactions).code(200);
+      userTransactions.then(data => Response(data).code(200))
+        .catch(() => Response('Error Occured').code(500));
     }
   },
 };
