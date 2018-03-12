@@ -15,8 +15,8 @@ module.exports = [{
       const { coin } = payload;
       const { quantity } = payload;
       const { price } = payload;
-      addOrRemoveCoin(userId, coin, quantity, price).then(() => {
-        reply('transaction inserted').code(201);
+      addOrRemoveCoin(userId, coin, quantity, price).then((result) => {
+        reply(result).code(201);
       }).catch(err => reply(`transaction failed ${err}`).code(500));
     }
   },
