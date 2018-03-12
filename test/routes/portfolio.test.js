@@ -22,7 +22,7 @@ describe('Test for portfolio API', () => {
     createUser(options)
       .then((result) => {
         details.toId = result.id;
-        token = jwt.sign({ userId: result.id }, 'thisissamplekeyforjwt', { expiresIn: '1h' });
+        token = jwt.sign({ userId: result.id }, 'cryptic-crypto', { expiresIn: '1h' });
         const admin = {
           fullName: 'admin',
           email: 'admin@admin.com',
@@ -81,7 +81,7 @@ describe('Test for portfolio API', () => {
     };
     // console.log(options);
     Server.inject(options, (result) => {
-      expect(Object.keys(JSON.parse(result.payload)[0]).sort()).toEqual(['coinId', 'id', 'price', 'quantity', 'fromId', 'toId'].sort());
+      expect(Object.keys(JSON.parse(result.payload)[0]).sort()).toEqual(['coinName', 'coinSymbol', 'id', 'price', 'quantity', 'fromId', 'toId', 'currentPrice'].sort());
       done();
     });
   });
