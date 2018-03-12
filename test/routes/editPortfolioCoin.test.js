@@ -58,7 +58,7 @@ describe('Test for portfolio API', () => {
     };
     server.inject(options).then((response) => {
       expect(response.statusCode).toBe(201);
-      expect(response.result).toBe('transaction inserted');
+      expect(Object.keys(response.result).sort()).toEqual(['coinId', 'coinName', 'createdAt', 'fromId', 'id', 'price', 'quantity', 'toId', 'updatedAt'].sort());
       done();
     });
   });
