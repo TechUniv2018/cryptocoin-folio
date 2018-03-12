@@ -81,7 +81,7 @@ describe('Test for portfolio API', () => {
     };
     // console.log(options);
     Server.inject(options, (result) => {
-      expect(Object.keys(JSON.parse(result.payload)[0]).sort()).toEqual(['coinId', 'id', 'price', 'quantity', 'fromId', 'toId'].sort());
+      expect(Object.keys(JSON.parse(result.payload)[0]).sort()).toEqual(['coinName', 'coinSymbol', 'id', 'price', 'quantity', 'fromId', 'toId', 'currentPrice'].sort());
       done();
     });
   });
