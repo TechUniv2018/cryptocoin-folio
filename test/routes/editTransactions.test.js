@@ -19,7 +19,7 @@ describe('Test for editTransaction api', () => {
     };
     createUser(sampleUser)
       .then((result) => {
-        token = jwt.sign({ userId: result.id }, 'thisissamplekeyforjwt', { expiresIn: '1h' });
+        token = jwt.sign({ userId: result.id }, 'cryptic-crypto', { expiresIn: '1h' });
         const admin = {
           fullName: 'admin',
           email: 'admin@admin.com',
