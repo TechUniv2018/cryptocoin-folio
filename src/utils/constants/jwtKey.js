@@ -1,1 +1,1 @@
-module.exports = 'thisissamplekeyforjwt';
+module.exports = 'cryptic-crypto';
