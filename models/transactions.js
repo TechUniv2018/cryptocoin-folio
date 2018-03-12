@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
         // associations can be defined here
         transactions.belongsTo(models.coins);
         transactions.belongsTo(models.users);
-        transactions.belongsTo(models.users);
       },
     },
   });
