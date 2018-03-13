@@ -59,5 +59,22 @@ describe('checking if the trnsfer route is working or not', () => {
         Models.users.destroy({ cascade: true, truncate: true }))
       .then(() => done());
   });
+  it('checking if the status code being sent is 401 when user does not exist', () => {
+    const options = {
+      url: '/transfer',
+      method: 'post',
+      payload: {
+        emailTo: 'admsdfsfin@admin.com',
+        quantity: 10,
+        symbol: 'BTC',
+      },
+      headers: {
+        authtoken: token,
+      },
+    };
+    return server.inject(options).then((response) => {
+      expect(response.statusCode).toBe(401);
+    });
+  });
 });
 
