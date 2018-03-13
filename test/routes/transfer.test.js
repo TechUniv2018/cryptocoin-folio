@@ -2,13 +2,11 @@ const server = require('../../index');
 const jwt = require('jsonwebtoken');
 const createUser = require('../../src/utils/helpers/createNewUser');
 const getCoinArray = require('../../src/utils/helpers/getCoinsArrayforSeed');
-const addOrRemoveCoins = require('../../src/utils/helpers/addOrRemoveCoins');
 const Models = require('../../models');
 
 
 describe('checking if the trnsfer route is working or not', () => {
   let token;
-  let transactionid;
   beforeAll((done) => {
     const sampleUser = {
       fullName: 'Bill Gates',
