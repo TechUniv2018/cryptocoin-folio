@@ -5,11 +5,12 @@ module.exports = (coinsArray) => {
   const priceRequestPromisesArray = [];
   coinsArray.forEach((coinObj) => {
     const options = {
-      url: EXTERNAL_LINKS.EXTERNAL_PRICE_HIST_MIN,
+      url: EXTERNAL_LINKS.EXTERNAL_PRICE_HIST_HOUR,
       method: 'get',
       qs: {
-        fsym: 'USD',
-        tsym: coinObj.symbol,
+        tsym: 'USD',
+        fsym: coinObj.symbol,
+        limit: 2000,
       },
     };
     console.log(options);

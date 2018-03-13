@@ -9,8 +9,8 @@ module.exports = () => ({
     pool: {
       max: 10,
       min: 0,
-      acquire: 50000,
-      idle: 10000,
+      idle: 20000,
+      acquire: 20000,
     },
   },
   test: {
