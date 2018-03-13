@@ -12,7 +12,12 @@ const addOrRemoveCoin = (userId, coin, price, quantity) => Models.coins.findOne(
     toId: userId,
     price,
     quantity,
-  });
+  })
+    .then((result) => {
+      const combineObject = result.dataValues;
+      combineObject.coinName = coinRecord.name;
+      return combineObject;
+    });
 });
 
 module.exports = addOrRemoveCoin;
