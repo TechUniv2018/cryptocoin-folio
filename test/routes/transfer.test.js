@@ -76,5 +76,22 @@ describe('checking if the trnsfer route is working or not', () => {
       expect(response.statusCode).toBe(401);
     });
   });
+  it('checking if the status code being sent is 401 when coin does not exist', () => {
+    const options = {
+      url: '/transfer',
+      method: 'post',
+      payload: {
+        emailTo: 'admin@admin.com',
+        quantity: 10,
+        symbol: 'LOL',
+      },
+      headers: {
+        authtoken: token,
+      },
+    };
+    return server.inject(options).then((response) => {
+      expect(response.statusCode).toBe(401);
+    });
+  });
 });
 
