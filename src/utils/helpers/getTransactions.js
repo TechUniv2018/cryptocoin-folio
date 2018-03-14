@@ -24,12 +24,21 @@ const transactions = userId =>
             price: eachTransaction.price,
             quantity: eachTransaction.quantity,
             currentPrice: eachTransaction.price,
+            createdAt: eachTransaction.createdAt,
           }));
         return array.push(singletransaction);
       });
       return Promise.all(array)
-        .then(result => result);
+        .then((result) => {
+          const compare = (a, b) => {
+            if (a.createdAt < b.createdAt) {
+              return -1;
+            }
+            return 1;
+          };
+          result.sort(compare);
+          return result;
+        });
     })
     .catch(err => err);
 module.exports = transactions;
-
