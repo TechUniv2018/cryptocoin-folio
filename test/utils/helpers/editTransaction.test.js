@@ -39,15 +39,9 @@ describe('checking if the editTransaction function works or not', () => {
     });
   });
   test('checking if editting is being done or not', (done) => {
-    editTransaction(2, transactionid, 2, 2, coinId).then((result) => {
-      expect(result).toBe('transaction edited');
-      done();
-    });
+    editTransaction(2, transactionid, 2, 2, 'BTC').then(result => expect(result).toBe('transaction edited')).then(() => done());
   });
   test('checking if editting gives  error when user id is wrong', (done) => {
-    editTransaction(100, 123, 2, 2, coinId).then((result) => {
-      expect(result).toBe('transaction not edited');
-      done();
-    });
+    editTransaction(100, 123, 2, 2, 'BTC').then(result => expect(result).toBe('transaction not edited')).then(() => done());
   });
 });

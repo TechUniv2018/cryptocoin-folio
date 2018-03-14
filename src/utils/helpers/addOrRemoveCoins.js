@@ -1,6 +1,6 @@
 const Models = require('../../../models');
 
-const addOrRemoveCoin = (userId, coin, price, quantity) => Models.coins.findOne({
+const addOrRemoveCoin = (userId, coin, quantity, price) => Models.coins.findOne({
   where: {
     symbol: coin,
   },

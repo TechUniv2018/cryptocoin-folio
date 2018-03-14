@@ -5,7 +5,6 @@ module.exports = {
   method: 'GET',
   path: '/portfolio',
   handler: (Request, Response) => {
-    // console.log(Request);
     const userData = getJWTpayload(Request);
     if (userData.message === 'token expired') {
       Response({ message: 'Token Expired' }).code(401);
