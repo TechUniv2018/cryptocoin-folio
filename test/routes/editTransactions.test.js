@@ -131,11 +131,29 @@ describe('Test for editTransaction api', () => {
       where: {
         id: transactionid,
       },
-    }).then((result) => {
-      expect(result.quantity).toBe(4);
-      expect(result.price).toBe(1000);
-    }).then(() => done()));
+    }).then(result => expect(result.quantity).toBe(4)).then(() => done()));
   });
+  it('checking if the transaction is being edited or not by checking database', (done) => {
+    const options = {
+      url: `/editTransaction?edit=${transactionid}`,
+      method: 'POST',
+      payload: {
+        coin: 'LTC',
+        quantity: 4,
+        price: 1000,
+      },
+      headers: {
+        authtoken: token,
+      },
+    };
+    server.inject(options).then(() => Models.transactions.findOne({
+      where: {
+        id: transactionid,
+      },
+    }).then(result => expect(result.price).toBe(1000)).then(() => done()));
+  });
+
+
   it('checking if the transaction is being edited or not by checking coinId', (done) => {
     let resultCoin;
     const options = {
@@ -160,9 +178,7 @@ describe('Test for editTransaction api', () => {
         where: {
           id: transactionid,
         },
-      }).then((resultTransaction) => {
-        expect(resultCoin.id).toBe(resultTransaction.coinId);
-      }).then(() => done());
+      }).then(resultTransaction => expect(resultCoin.id).toBe(resultTransaction.coinId)).then(() => done());
     });
   });
 });

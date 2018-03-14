@@ -1,6 +1,7 @@
 const getJWTpayload = require('../utils/helpers/getJWTpayload');
 const deleteTransaction = require('../../src/utils/helpers/deleteTransaction');
 const editTransaction = require('../../src/utils/helpers/editTransaction');
+const getUserFormPayload = require('../utils/helpers/getUserFormPayload');
 
 module.exports = {
   method: 'POST',
@@ -22,10 +23,11 @@ module.exports = {
           }
         });
       } else {
-        const { price } = request.payload;
-        const { quantity } = request.payload;
-        const { coinId } = request.payload;
-        editTransaction(userId, queryObject[typeOfRequest[0]], price, quantity, coinId)
+        const payload = getUserFormPayload(request);
+        const { quantity } = payload;
+        const { coin } = payload;
+        const { price } = payload;
+        editTransaction(userId, queryObject[typeOfRequest[0]], price, quantity, coin)
           .then((reply) => {
             if (reply === 'transaction edited') { response(reply).code(200); } else {
               response(reply).code(409);
