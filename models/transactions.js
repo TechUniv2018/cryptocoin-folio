@@ -6,14 +6,12 @@ module.exports = (sequelize, DataTypes) => {
     toId: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     quantity: DataTypes.FLOAT,
-  }, {
-    classMethods: {
-      associate(models) {
-        // associations can be defined here
-        transactions.belongsTo(models.coins);
-        transactions.belongsTo(models.users);
-      },
-    },
   });
+  transactions.associate = (models) => {
+    // associations can be defined here
+    transactions.belongsTo(models.coins);
+    transactions.belongsTo(models.users, { foreignKey: 'fromId', as: 'from' });
+    transactions.belongsTo(models.users, { foreignKey: 'toId', as: 'to' });
+  };
   return transactions;
 };
