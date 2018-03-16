@@ -17,7 +17,7 @@ module.exports = [{
     reply('Hello world!');
   },
 }].concat(
-  signup, prices,
-  liveGraph, login, orders, portfolio, editPortfolioCoin,
-  editTransactions, twitter, transfer, getUsername,
+  transfer, getUsername,
+  signup, prices, liveGraph, login, orders, portfolio,
+  editPortfolioCoin, editTransactions, twitter,
 );
