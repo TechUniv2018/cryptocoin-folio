@@ -9,6 +9,7 @@ const editTransactions = require('./editTransactions');
 const twitter = require('./twitter');
 const transfer = require('./transfer');
 const getUsername = require('./getUsername');
+const historicalData = require('./historicalData');
 
 module.exports = [{
   path: '/',
