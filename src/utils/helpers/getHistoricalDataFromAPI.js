@@ -14,6 +14,7 @@ module.exports = (coinsArray) => {
       },
     };
     console.log(options);
+    console.log(options);
     priceRequestPromisesArray
       .push(rp(options)
         .then(result => (

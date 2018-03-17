@@ -26,7 +26,7 @@ module.exports = [
       Models.coins.findOne({ where: { symbol: coin }, raw: true })
         .then((result) => {
           Models.prices.findAll({
-            attributes: ['timeStamp', 'open', 'close', 'high', 'low'],
+            attributes: ['timeStamp', 'open', 'high', 'low', 'close'],
             where: { coinId: result.id },
             raw: true,
             order: [['timeStamp', 'ASC']],
