@@ -5,14 +5,14 @@ module.exports = {
   method: 'GET',
   path: '/portfolio',
   handler: (Request, Response) => {
-    // console.log(Request);
     const userData = getJWTpayload(Request);
     if (userData.message === 'token expired') {
       Response({ message: 'Token Expired' }).code(401);
     } else {
       const { userId } = userData;
       const userTransactions = getTransactions(userId);
-      Response(userTransactions).code(200);
+      userTransactions.then(data => Response(data).code(200))
+        .catch(() => Response('Error Occured').code(500));
     }
   },
 };

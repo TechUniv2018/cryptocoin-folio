@@ -56,7 +56,7 @@ describe('Test for getTransactions helper function', () => {
   });
   test('Should return user transactions', (done) => {
     getTransactions(details.toId).then((result) => {
-      expect(Object.keys(result[0]).sort()).toEqual(['coinId', 'id', 'price', 'quantity', 'fromId', 'toId'].sort());
+      expect(Object.keys(result[0]).sort()).toEqual(['coinName', 'coinSymbol', 'id', 'price', 'quantity', 'fromId', 'toId', 'currentPrice', 'createdAt'].sort());
       done();
     });
   });
