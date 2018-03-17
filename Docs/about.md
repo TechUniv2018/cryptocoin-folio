@@ -33,44 +33,44 @@ The use cases / user stories may be found at the project's [Issues page](https:/
 
 ## Entity Relationship(ER) Diagram
 
-![ER Diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/er.jpg)
+![ER Diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/er.jpg)
 
 ## Use Case Diagrams:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/usecaseDiagram.png)
+![Use Case Diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/usecaseDiagram.png)
 
 ## Architecture Diagram:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/architechtureDiagram.png)
+![Architecture Diagram](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/architechtureDiagram.png)
 
 The above diagram depicts the various systems involved in the project and how they are connected.
 
 ## Wireframes
 
-### homepage:
+### Homepage:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/homepage.png)
+![Home Page](https://github.com/TechUniv2018/cryptocoin-folio/blob/master/Docs/wireframes/homepage.png)
 
-### login page:
+### Login Page:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/login.png)
+![Login Page](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/login.png)
 
-### sign up page:
+### Sign Up Page:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/register.png)
+![Sign Up Page](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/register.png)
 
-### View Portfolio page:
+### View Portfolio Page:
 
 On this one, the team remains undecided
 
-View portfolio1:
+View Portfolio 1:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/viewportfolio1.png)
+![View Portofolio](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/viewportfolio1.png)
 
-View portfolio2:
+View Portfolio 2:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/viewportfolio2.png)
+![View Portofolio](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/viewportfolio2.png)
 
-### Edit portfolio page:
+### Edit Portfolio Page:
 
-![Alt text](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/images/wireframes/editportfolio.png)
+![Edit Portfolio Page](https://github.com/shubhamzanwar/cryptocoin-folio/blob/master/Docs/wireframes/editportfolio.png)

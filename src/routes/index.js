@@ -7,6 +7,8 @@ const orders = require('./orders');
 const editPortfolioCoin = require('./editPortfolioCoin');
 const editTransactions = require('./editTransactions');
 const twitter = require('./twitter');
+const transfer = require('./transfer');
+const getUsername = require('./getUsername');
 
 module.exports = [{
   path: '/',
@@ -15,6 +17,7 @@ module.exports = [{
     reply('Hello world!');
   },
 }].concat(
+  transfer, getUsername,
   signup, prices, liveGraph, login, orders, portfolio,
   editPortfolioCoin, editTransactions, twitter,
 );

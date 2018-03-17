@@ -5,13 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     mobileNumbe: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-  }, {
-    classMethods: {
-      associate(models) {
-        // associations can be defined here
-        users.belongsTo(models.transactions);
-      },
-    },
   });
   return users;
 };
