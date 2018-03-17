@@ -2,7 +2,7 @@ module.exports = (prices, coinId) => {
   const pricesArrayForBulkInsert = [];
   prices.forEach((price) => {
     const priceForBulkInsert = {};
-    priceForBulkInsert.timeStamp = price.time;
+    priceForBulkInsert.timeStamp = String(price.time);
     priceForBulkInsert.coinId = coinId;
     priceForBulkInsert.open = price.open;
     priceForBulkInsert.close = price.close;

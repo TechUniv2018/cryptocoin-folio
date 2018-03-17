@@ -16,8 +16,4 @@ module.exports = [{
   handler: (request, reply) => {
     reply('Hello world!');
   },
-}].concat(
-  transfer, getUsername,
-  signup, prices, liveGraph, login, orders, portfolio,
-  editPortfolioCoin, editTransactions, twitter,
-);
+}].concat(signup, prices, liveGraph, login, orders, portfolio, historicalData, transfer, getUsername, editPortfolioCoin, editTransactions, twitter);
