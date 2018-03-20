@@ -3,7 +3,7 @@ const createToken = require('../../src/utils/helpers/createToken.js');
 const Models = require('../../models/');
 const server = require('../../index');
 
-describe('Test for notification route get request', () => {
+describe('Test for notification route', () => {
   let authtoken;
   beforeAll((done) => {
     const user = {
@@ -69,6 +69,19 @@ describe('Test for notification route get request', () => {
     };
     server.inject(options).then((response) => {
       expect(JSON.parse(response.payload)[0].text).toBe('you have requested 10 btc from parth');
+      done();
+    });
+  });
+  test('Should set status of user to true for put request', (done) => {
+    const options = {
+      url: '/notification',
+      method: 'PUT',
+      headers: {
+        authtoken,
+      },
+    };
+    server.inject(options).then((response) => {
+      expect(response.statusCode).toBe(204);
       done();
     });
   });
