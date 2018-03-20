@@ -10,6 +10,7 @@ const twitter = require('./twitter');
 const transfer = require('./transfer');
 const getUsername = require('./getUsername');
 const historicalData = require('./historicalData');
+const notification = require('./notification');
 
 module.exports = [{
   path: '/',
@@ -18,16 +19,7 @@ module.exports = [{
     reply('Hello world!');
   },
 }].concat(
-  signup,
-  prices,
-  liveGraph,
-  login,
-  orders,
-  portfolio,
-  historicalData,
-  transfer,
-  getUsername,
-  editPortfolioCoin,
-  editTransactions,
-  twitter,
+  signup, prices, liveGraph, login, orders, portfolio, historicalData,
+  transfer, getUsername, editPortfolioCoin, editTransactions, twitter,
+  notification,
 );
