@@ -9,11 +9,15 @@ module.exports = {
     userId: {
       type: Sequelize.INTEGER,
     },
+    transactionId: {
+      type: Sequelize.INTEGER,
+    },
     text: {
       type: Sequelize.STRING,
     },
     status: {
       type: Sequelize.BOOLEAN,
+      defaultValue: true,
     },
     createdAt: {
       allowNull: false,

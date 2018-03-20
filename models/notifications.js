@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const notifications = sequelize.define('notifications', {
     userId: DataTypes.INTEGER,
+    transactionId: DataTypes.INTEGER,
     text: DataTypes.STRING,
     status: DataTypes.BOOLEAN,
   }, {
