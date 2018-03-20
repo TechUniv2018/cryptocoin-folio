@@ -17,7 +17,6 @@ describe('Test for getTransactions helper function', () => {
   test('Should return user transactions', (done) => {
     getNotification(2)
       .then((result) => {
-        console.log(result);
         expect(result[0].text).toBe('Bill Gates approved your request for 100 BTC');
         done();
       });
