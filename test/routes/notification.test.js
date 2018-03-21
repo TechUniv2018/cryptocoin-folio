@@ -23,14 +23,9 @@ describe('Test for notification route', () => {
         return Models.notifications.create({
           userId: details.id,
           transactionId: 1,
-          text: 'you have requested 10 btc from parth',
+          text: 'Parth has requested 10 BTC from you',
         });
       })
-      .then(() => Models.notifications.create({
-        userId: 2,
-        transactionId: 1,
-        text: 'you have requested 10 btc from parth',
-      }))
       .then(() => done());
   });
   afterAll((done) => {

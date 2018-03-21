@@ -8,7 +8,11 @@ module.exports = [{
   handler: (request, response) => {
     const userData = getJWTpayload(request);
     if (userData.message === 'token expired') {
+<<<<<<< HEAD
       Response({ message: 'Token Expired' }).code(401);
+=======
+      response({ message: 'Token Expired' }).code(401);
+>>>>>>> 0c3bfc131550066330bcc85665d0a5b35bc8c1cc
     } else {
       const { userId } = userData;
       getNotification(userId)
@@ -23,7 +27,11 @@ module.exports = [{
   handler: (request, response) => {
     const userData = getJWTpayload(request);
     if (userData.message === 'token expired') {
+<<<<<<< HEAD
       Response({ message: 'Token Expired' }).code(401);
+=======
+      response({ message: 'Token Expired' }).code(401);
+>>>>>>> 0c3bfc131550066330bcc85665d0a5b35bc8c1cc
     } else {
       const { userId } = userData;
       markNotifications(userId)
