@@ -1,7 +1,14 @@
 const Models = require('../../../models');
 
 module.exports = userId => Promise.all([Models.transactions.findAll({
-  where: { fromId: userId },
+  where: {
+    [Models.Sequelize.Op.or]: [{
+      fromId: userId,
+    }, {
+      toId: userId,
+      quantity: { [Models.Sequelize.Op.lt]: 0 },
+    }],
+  },
   include: [
     {
       model: Models.coins,
@@ -19,7 +26,12 @@ module.exports = userId => Promise.all([Models.transactions.findAll({
     },
   ],
 }), Models.transactions.findAll({
-  where: { toId: userId },
+  where: {
+    toId: userId,
+    quantity: {
+      [Models.Sequelize.Op.gt]: 0,
+    },
+  },
   include: [
     {
       model: Models.coins,
