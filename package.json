@@ -1,0 +1,40 @@
+{
+  "name": "cryptocoin-folio",
+  "version": "0.1.0",
+  "description": "A website for a simplified crypto-coin ticker and dashboard portal which shows near-real-time value movement of the 10 coins by fetching the data from websites like coinmarketcap.com, poloniex.com. It shows the visualization of data for 3 periods (1 day, 1 week, 1 month) and derive metrics from the collected data (simple moving average, candle stick representation).",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/sequelize db:migrate:undo:all && NODE_ENV=test sequelize db:migrate && jest --forceExit --runInBand --coverage",
+    "start": "./node_modules/.bin/sequelize db:migrate && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TechUniv2018/cryptocoin-folio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TechUniv2018/cryptocoin-folio/issues"
+  },
+  "homepage": "https://github.com/TechUniv2018/cryptocoin-folio#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "binance-api-node": "^0.5.6",
+    "eslint": "^4.17.0",
+    "hapi": "^16.6.2",
+    "joi": "^13.1.2",
+    "jsonwebtoken": "^8.1.1",
+    "password-hash": "^1.2.2",
+    "pg": "^7.4.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "sequelize": "^4.32.7",
+    "sequelize-cli": "^3.2.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "jest": "^22.1.4"
+  }
+}

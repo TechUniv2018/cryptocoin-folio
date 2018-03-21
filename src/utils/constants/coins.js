@@ -1,0 +1,2 @@
+const coins = ['BTC', 'ETH', 'XRP', 'LTC', 'NEO', 'ADA', 'XLM', 'EOS', 'XMR', 'DASH', 'TRX', 'ETC', 'VEN', 'BTG', 'LSK', 'QTUM', 'OMG', 'ICX', 'ZEC', 'DGD', 'BNB', 'STEEM', 'XVG', 'STRAT', 'PPT', 'WAVES', 'BTS', 'SNT', 'AE', 'ZRX', 'WTC', 'KMD', 'ARK', 'HSR', 'BAT', 'GAS', 'PIVX', 'ELF', 'AION', 'LRC', 'FUN', 'KNC', 'GXS', 'IOST', 'XZC', 'SALT', 'LINK', 'POWR', 'NEBL', 'ICN'];
+module.exports = coins;
