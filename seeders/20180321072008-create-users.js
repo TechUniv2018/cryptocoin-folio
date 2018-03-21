@@ -13,7 +13,7 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    Models.user.bulkCreate([{
+    Models.users.bulkCreate([{
       id: 1,
       fullName: 'admin',
       email: 'admin@admin.com',
