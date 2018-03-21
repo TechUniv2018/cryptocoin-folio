@@ -9,6 +9,7 @@ const editTransactions = require('./editTransactions');
 const twitter = require('./twitter');
 const transfer = require('./transfer');
 const getUsername = require('./getUsername');
+const requests = require('./request');
 
 module.exports = [{
   path: '/',
@@ -20,4 +21,5 @@ module.exports = [{
   transfer, getUsername,
   signup, prices, liveGraph, login, orders, portfolio,
   editPortfolioCoin, editTransactions, twitter,
+  requests,
 );
