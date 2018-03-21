@@ -18,16 +18,19 @@ module.exports = {
       fullName: 'admin',
       email: 'admin@admin.com',
       password: 'admin',
+      // mobileNumbe: '1234567890',
     }, {
+      id: 2,
       fullName: 'Paul McCartney',
       email: 'paul@gmail.com',
       password: encryptPassword('paul123'),
-      mobileNumbe: 9944198887,
+      mobileNumbe: '9944198887',
     }, {
+      id: 3,
       fullName: 'John Lennon',
       email: 'John@gmail.com',
       password: encryptPassword('paul123'),
-      mobileNumbe: 9431908524,
+      mobileNumbe: '9431908524',
     }]),
 
   down: (queryInterface, Sequelize) =>
