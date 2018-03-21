@@ -1,0 +1,72 @@
+[
+	{
+		"result": {
+			"Response": "Success",
+			"Type": 100,
+			"Aggregated": false,
+			"Data": [
+				{
+					"time": 1520431560,
+					"high": 0.0000944,
+					"low": 0.00009434,
+					"open": 0.0000944,
+					"volumefrom": 449244.79,
+					"volumeto": 42.28,
+					"close": 0.00009434
+				},
+				{
+					"time": 1520431560,
+					"high": 0.0001035,
+					"low": 0.0001032,
+					"open": 0.0001033,
+					"volumefrom": 587772.4,
+					"volumeto": 60.79,
+					"close": 0.0001035
+				}
+			],
+			"TimeTo": 1520481180,
+			"TimeFrom": 1520394780,
+			"FirstValueInArray": true,
+			"ConversionType": {
+				"type": "invert",
+				"conversionSymbol": ""
+			}
+		},
+		"coinId": 64
+	},
+	{
+		"result": {
+			"Response": "Success",
+			"Type": 100,
+			"Aggregated": false,
+			"Data": [
+				{
+					"time": 1520394780,
+					"high": 0.001232,
+					"low": 0.001231,
+					"open": 0.001232,
+					"volumefrom": 193931.94,
+					"volumeto": 239.14,
+					"close": 0.001231
+				},
+				{
+					"time": 1520394840,
+					"high": 0.001231,
+					"low": 0.00123,
+					"open": 0.001231,
+					"volumefrom": 253615.52,
+					"volumeto": 312.05,
+					"close": 0.00123
+				}
+			],
+			"TimeTo": 1520481180,
+			"TimeFrom": 1520394780,
+			"FirstValueInArray": true,
+			"ConversionType": {
+				"type": "invert",
+				"conversionSymbol": ""
+			}
+		},
+		"coinId": 115
+	}
+]

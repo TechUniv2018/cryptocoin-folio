@@ -22,7 +22,7 @@ describe('Format Historical Data For Insert', () => {
     }];
 
     const formattedData = [{
-      timeStamp: 1520215260,
+      timeStamp: '1520215260',
       coinId: 2,
       high: 0.00008709,
       low: 0.00008707,
@@ -31,7 +31,7 @@ describe('Format Historical Data For Insert', () => {
       close: 0.00008709,
     },
     {
-      timeStamp: 1520215320,
+      timeStamp: '1520215320',
       coinId: 2,
       high: 0.00008711,
       low: 0.00008709,
