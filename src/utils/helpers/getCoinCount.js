@@ -1,7 +1,8 @@
 const Models = require('../../../models');
 
-module.exports = coinId => Models.coins.count({
+module.exports = coinId => Models.coins.findAll({
   where: {
-    id: coinId,
+    symbol: coinId,
   },
+  raw: true,
 });

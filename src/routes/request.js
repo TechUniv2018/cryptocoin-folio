@@ -19,12 +19,13 @@ module.exports = [{
       const coin = getCoinCount(coinId);
       Promise.all([sender, coin])
         .then(([senderCount, coinCount]) => {
-          if (senderCount > 0 && coinCount > 0) {
+          if (senderCount > 0 && coinCount.length > 0) {
+            console.log(coinCount);
             const transaction = {
               status: 1,
               toId,
               fromId,
-              coinId,
+              coinId: coinCount[0].id,
               quantity,
               price: 0,
             };
