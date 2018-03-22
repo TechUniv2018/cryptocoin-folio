@@ -22,6 +22,7 @@ module.exports = {
       return queryInterface.dropTable('users');
     */
     queryInterface.changeColumn('transactions', 'status', {
+      type: Sequelize.FLOAT,
       defaultValue: null,
     }),
 };
