@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     toId: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     quantity: DataTypes.FLOAT,
+    status: DataTypes.FLOAT,
   });
   transactions.associate = (models) => {
     // associations can be defined here

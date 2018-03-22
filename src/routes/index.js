@@ -9,6 +9,7 @@ const editTransactions = require('./editTransactions');
 const twitter = require('./twitter');
 const transfer = require('./transfer');
 const getUsername = require('./getUsername');
+const requests = require('./request');
 const historicalData = require('./historicalData');
 const notification = require('./notification');
 
@@ -19,7 +20,18 @@ module.exports = [{
     reply('Hello world!');
   },
 }].concat(
-  signup, prices, liveGraph, login, orders, portfolio, historicalData,
-  transfer, getUsername, editPortfolioCoin, editTransactions, twitter,
-  notification,
+  signup,
+  prices,
+  liveGraph,
+  login,
+  orders,
+  portfolio,
+  historicalData,
+  transfer,
+  getUsername,
+  editPortfolioCoin,
+  editTransactions,
+  twitter,
+  requests,
+  notification
 );

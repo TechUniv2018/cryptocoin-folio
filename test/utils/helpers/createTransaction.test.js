@@ -65,7 +65,7 @@ describe('Test for create transaction function', () => {
     };
     createTransaction(options)
       .then((message) => {
-        expect(Object.keys(message).sort()).toEqual(['id', 'coinId', 'toId', 'fromId', 'price', 'quantity', 'createdAt', 'updatedAt'].sort());
+        expect(Object.keys(message).sort()).toEqual(['id', 'coinId', 'status', 'toId', 'fromId', 'price', 'quantity', 'createdAt', 'updatedAt'].sort());
         done();
       });
   });
