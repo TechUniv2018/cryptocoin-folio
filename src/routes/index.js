@@ -12,6 +12,7 @@ const getUsername = require('./getUsername');
 const requests = require('./request');
 const historicalData = require('./historicalData');
 const otp = require('./otp');
+const notification = require('./notification');
 
 module.exports = [{
   path: '/',
@@ -34,4 +35,5 @@ module.exports = [{
   twitter,
   requests,
   otp,
+  notification,
 );
