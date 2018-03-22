@@ -3,6 +3,7 @@ const getJWTpayload = require('../utils/helpers/getJWTpayload');
 const getPayload = require('../utils/helpers/getUserFormPayload');
 const getUserCount = require('../utils/helpers/getUserCount');
 const getCoinCount = require('../utils/helpers/getCoinCount');
+const pusherFunction = require('../utils/helpers/pusherFunction');
 
 module.exports = [{
   method: 'POST',
@@ -20,7 +21,6 @@ module.exports = [{
       Promise.all([sender, coin])
         .then(([senderCount, coinCount]) => {
           if (senderCount > 0 && coinCount.length > 0) {
-            console.log(coinCount);
             const transaction = {
               status: 1,
               toId,
@@ -29,7 +29,19 @@ module.exports = [{
               quantity,
               price: 0,
             };
-            return Models.transactions.create(transaction);
+            return Models.transactions.create(transaction)
+              .then(() => Models.users.findOne({
+                where: {
+                  id: fromId,
+                },
+              }))
+              .then((data) => {
+                pusherFunction({
+                  name: data.dataValues.userName,
+                  text: 'idk what text to be entered so I typed this for fun',
+                  status: 1,
+                });
+              });
           }
           throw new Error('bleh');
         })
