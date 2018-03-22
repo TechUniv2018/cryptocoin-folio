@@ -10,16 +10,38 @@ describe('Testing the request POST route.', () => {
       method: 'POST',
       payload: {
         fromId: 3,
-        coinId: 1,
+        coinId: 'BTC',
         quantity: 2,
       },
       headers: {
         authToken: createToken({ id: 2 }),
       },
     };
-    server.inject(options, (result) => {
-      expect(result.statusCode).toBe(201);
-      done();
+    const userPromise = Models.users.bulkCreate([{
+      id: 2,
+      fullName: 'Paul McCartney',
+      email: 'paul@gmail.com',
+      password: encryptPassword('paul123'),
+      mobileNumbe: '9944198887',
+    }, {
+      id: 3,
+      fullName: 'John Lennon',
+      email: 'John@gmail.com',
+      password: encryptPassword('paul123'),
+      mobileNumbe: '9431908524',
+    }]);
+
+    const coinPromise = Models.coins.create({
+      symbol: 'BTC',
+      id: 1,
+      name: 'Bitcoin',
+    });
+
+    Promise.all([userPromise, coinPromise]).then(() => {
+      server.inject(options, (result) => {
+        expect(result.statusCode).toBe(201);
+        done();
+      });
     });
   });
 });
