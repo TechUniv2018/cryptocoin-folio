@@ -11,6 +11,7 @@ const transfer = require('./transfer');
 const getUsername = require('./getUsername');
 const requests = require('./request');
 const historicalData = require('./historicalData');
+const notification = require('./notification');
 
 module.exports = [{
   path: '/',
@@ -32,4 +33,5 @@ module.exports = [{
   editTransactions,
   twitter,
   requests,
+  notification
 );
