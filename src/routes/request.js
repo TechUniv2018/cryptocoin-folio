@@ -16,20 +16,26 @@ module.exports = [{
       const payload = getPayload(request);
       const { fromId, coinId, quantity } = payload;
       const sender = getUserCount(fromId);
+      const receiver = getUserCount(toId);
       const coin = getCoinCount(coinId);
-      Promise.all([sender, coin])
-        .then(([senderCount, coinCount]) => {
-          if (senderCount > 0 && coinCount.length > 0) {
-            console.log(coinCount);
+      Promise.all([sender, coin, receiver])
+        .then(([senderInfo, coinInfo, receiverInfo]) => {
+          if (senderInfo.length > 0 && coinInfo.length > 0) {
+            console.log(coinInfo);
             const transaction = {
               status: 1,
               toId,
               fromId,
-              coinId: coinCount[0].id,
+              coinId: coinInfo[0].id,
               quantity,
               price: 0,
             };
-            return Models.transactions.create(transaction);
+            return Models.transactions.create(transaction)
+              .then(() => Models.notifications.create({
+                userId: fromId,
+                text: `${receiverInfo[0].fullName} has requested ${quantity} ${coinId}s`,
+                status: 1,
+              }));
           }
           throw new Error('bleh');
         })
