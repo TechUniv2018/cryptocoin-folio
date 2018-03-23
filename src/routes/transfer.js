@@ -38,19 +38,35 @@ module.exports = [{
       const { transactionId } = payload;
       const { otp } = payload;
       const { status } = payload;
-      Promise.all([getTransactionById(transactionId, fromId), verifyOtp(fromId, otp)])
-        .then(([transaction, otpObj]) => {
-          if (transaction.length > 0 && otpObj.length > 0) {
-            return approveTransaction(transaction[0].id, status);
-          }
-          throw new Error('Invalid request');
-        })
-        .then(() => {
-          response('Transaction Approved').code(201);
-        })
-        .catch(() => {
-          response('An Error occured').code(403);
-        });
+      if (status === 0) {
+        Promise.all([getTransactionById(transactionId, fromId), verifyOtp(fromId, otp)])
+          .then(([transaction, otpObj]) => {
+            if (transaction.length > 0 && otpObj.length > 0) {
+              return approveTransaction(transaction[0].id, status);
+            }
+            throw new Error('Invalid request');
+          })
+          .then(() => {
+            response('Transaction Approved').code(201);
+          })
+          .catch(() => {
+            response('An Error occured').code(403);
+          });
+      } else {
+        getTransactionById(transactionId, fromId)
+          .then((transaction) => {
+            if (transaction.length > 0) {
+              return approveTransaction(transaction[0].id, status);
+            }
+            throw new Error();
+          })
+          .then(() => {
+            response('Transaction Rejected').code(201);
+          })
+          .catch(() => {
+            response('An error occured').code(403);
+          });
+      }
     }
   },
 }];
