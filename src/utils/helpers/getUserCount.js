@@ -1,7 +1,8 @@
 const Models = require('../../../models');
 
-module.exports = userId => Models.users.count({
+module.exports = userId => Models.users.findAll({
   where: {
     id: userId,
   },
+  raw: true,
 });
