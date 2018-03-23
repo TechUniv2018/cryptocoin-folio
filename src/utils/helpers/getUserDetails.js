@@ -1,8 +1,9 @@
 const Models = require('../../../models');
 
-module.exports = userId => Models.users.findAll({
+module.exports = id => Models.users.findOne({
   where: {
-    id: userId,
+    id,
   },
   raw: true,
 });
+

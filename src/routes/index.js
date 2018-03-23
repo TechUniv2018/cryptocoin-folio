@@ -11,6 +11,7 @@ const transfer = require('./transfer');
 const getUsername = require('./getUsername');
 const requests = require('./request');
 const historicalData = require('./historicalData');
+const otp = require('./otp');
 const notification = require('./notification');
 
 module.exports = [{
@@ -33,5 +34,6 @@ module.exports = [{
   editTransactions,
   twitter,
   requests,
-  notification
+  otp,
+  notification,
 );
