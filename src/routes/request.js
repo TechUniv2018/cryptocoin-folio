@@ -35,7 +35,7 @@ module.exports = [{
               .then(() => Models.notifications.create({
                 userId: fromId,
                 text: `${receiverInfo[0].fullName} has requested ${quantity} ${coinId}s`,
-                status: 1,
+                status: false,
               }))
               .then(() => Models.users.findOne({
                 where: {
@@ -44,9 +44,9 @@ module.exports = [{
               }))
               .then((data) => {
                 pusherFunction({
-                  name: data.dataValues.userName,
-                  text: 'idk what text to be entered so I typed this for fun',
-                  status: 1,
+                  name: data.dataValues.fullName,
+                  text: `${receiverInfo[0].fullName} has requested ${quantity} ${coinId}s`,
+                  status: false,
                 });
               });
           }
