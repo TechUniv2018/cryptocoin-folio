@@ -63,7 +63,7 @@ describe('Test for notification route', () => {
       },
     };
     server.inject(options).then((response) => {
-      expect(JSON.parse(response.payload)[0].text).toBe('you have requested 10 btc from parth');
+      expect(JSON.parse(response.payload)[0].text).toBe('Parth has requested 10 BTC from you');
       done();
     });
   });
