@@ -6,6 +6,7 @@ const getTransactionById = require('../utils/helpers/getTransactionById');
 const verifyOtp = require('../utils/helpers/verifyOtp');
 const approveTransaction = require('../utils/helpers/approveTransaction');
 const Models = require('../../models');
+const pusherFunction = require('../utils/helpers/pusherFunction');
 
 module.exports = [{
   method: 'GET',
@@ -53,9 +54,20 @@ module.exports = [{
               userId: toId,
               text: `${fromName} has approved your request`,
               status: false,
-            }).then(() => {
-              response('Transaction Approved').code(201);
-            });
+            })
+              .then(() => Models.users.findOne({
+                where: {
+                  id: toId,
+                },
+              }))
+              .then((data) => {
+                pusherFunction({
+                  name: data.dataValues.fullName,
+                  text: `${fromName} has approved your request`,
+                  status: false,
+                });
+                response('Transaction Approved').code(201);
+              });
           })
           .catch(() => {
             response('An Error occured').code(403);
