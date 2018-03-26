@@ -5,6 +5,7 @@ const getPayload = require('../utils/helpers/getUserFormPayload');
 const getTransactionById = require('../utils/helpers/getTransactionById');
 const verifyOtp = require('../utils/helpers/verifyOtp');
 const approveTransaction = require('../utils/helpers/approveTransaction');
+const Models = require('../../models');
 
 module.exports = [{
   method: 'GET',
@@ -38,6 +39,7 @@ module.exports = [{
       const { transactionId } = payload;
       const { otp } = payload;
       const { status } = payload;
+      const { toId, fromName } = payload;
       if (status === 0) {
         Promise.all([getTransactionById(transactionId, fromId), verifyOtp(fromId, otp)])
           .then(([transaction, otpObj]) => {
@@ -47,7 +49,13 @@ module.exports = [{
             throw new Error('Invalid request');
           })
           .then(() => {
-            response('Transaction Approved').code(201);
+            Models.notifications.create({
+              userId: toId,
+              text: `${fromName} has approved your request`,
+              status: false,
+            }).then(() => {
+              response('Transaction Approved').code(201);
+            });
           })
           .catch(() => {
             response('An Error occured').code(403);
@@ -61,7 +69,13 @@ module.exports = [{
             throw new Error();
           })
           .then(() => {
-            response('Transaction Rejected').code(201);
+            Models.notifications.create({
+              userId: toId,
+              text: `${fromName} has rejected your request`,
+              status: false,
+            }).then(() => {
+              response('Transaction Rejected').code(201);
+            });
           })
           .catch(() => {
             response('An error occured').code(403);
