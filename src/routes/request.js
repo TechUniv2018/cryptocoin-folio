@@ -3,6 +3,7 @@ const getJWTpayload = require('../utils/helpers/getJWTpayload');
 const getPayload = require('../utils/helpers/getUserFormPayload');
 const getUserCount = require('../utils/helpers/getUserCount');
 const getCoinCount = require('../utils/helpers/getCoinCount');
+const pusherFunction = require('../utils/helpers/pusherFunction');
 
 module.exports = [{
   method: 'POST',
@@ -34,8 +35,20 @@ module.exports = [{
               .then(() => Models.notifications.create({
                 userId: fromId,
                 text: `${receiverInfo[0].fullName} has requested ${quantity} ${coinId}s`,
-                status: 1,
-              }));
+                status: false,
+              }))
+              .then(() => Models.users.findOne({
+                where: {
+                  id: fromId,
+                },
+              }))
+              .then((data) => {
+                pusherFunction({
+                  name: data.dataValues.fullName,
+                  text: `${receiverInfo[0].fullName} has requested ${quantity} ${coinId}s`,
+                  status: false,
+                });
+              });
           }
           throw new Error('bleh');
         })
