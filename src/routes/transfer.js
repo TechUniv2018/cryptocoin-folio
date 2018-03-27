@@ -85,9 +85,21 @@ module.exports = [{
               userId: toId,
               text: `${fromName} has rejected your request`,
               status: false,
-            }).then(() => {
-              response('Transaction Rejected').code(201);
-            });
+            })
+              .then(() => Models.users.findOne({
+                where: {
+                  id: toId,
+                },
+              }))
+              .then((data) => {
+                console.log(data.dataValues);
+                pusherFunction({
+                  name: data.dataValues.fullName,
+                  text: `${fromName} has rejected your request`,
+                  status: false,
+                });
+                response('Transaction Rejected').code(201);
+              });
           })
           .catch(() => {
             response('An error occured').code(403);
