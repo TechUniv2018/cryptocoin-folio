@@ -24,6 +24,7 @@ module.exports = [
                 token: createToken(result.dataValues),
                 message: 'Logged in',
                 username: result.dataValues.fullName,
+                userId: result.dataValues.id,
               });
             } else {
               Response({

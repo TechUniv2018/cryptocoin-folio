@@ -54,7 +54,7 @@ describe('Test for login API with valid data', () => {
       },
     };
     Server.inject(options, (response) => {
-      expect(Object.keys(response.result)).toEqual(['code', 'token', 'message', 'username']);
+      expect(Object.keys(response.result)).toEqual(['code', 'token', 'message', 'username', 'userId']);
       done();
     });
   });

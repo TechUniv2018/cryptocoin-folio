@@ -65,7 +65,6 @@ describe('Test for portfolio API', () => {
         authtoken: token,
       },
     };
-    // console.log(options);
     Server.inject(options, (response) => {
       expect(typeof JSON.parse(response.payload)).toBe('object');
       done();
@@ -79,7 +78,6 @@ describe('Test for portfolio API', () => {
         authtoken: token,
       },
     };
-    // console.log(options);
     Server.inject(options, (result) => {
       expect(Object.keys(JSON.parse(result.payload)[0]).sort()).toEqual(['coinName', 'coinSymbol', 'id', 'price', 'quantity', 'fromId', 'toId', 'currentPrice', 'createdAt'].sort());
       done();
