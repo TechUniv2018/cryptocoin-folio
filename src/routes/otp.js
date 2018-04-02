@@ -1,7 +1,7 @@
 const getJWTpayload = require('../utils/helpers/getJWTpayload');
 const generateOtp = require('../utils/helpers/generateOtp');
 const Models = require('../../models');
-const msg91 = require('msg91')('199605AlBxU1LOFG5a90f82e', 'CFolio', '4');
+const msg91 = require('msg91')('204853AG5okXZJ5ab1d6d1', 'CFolio', '4');
 const getUser = require('../utils/helpers/getUserDetails');
 
 module.exports = [{
