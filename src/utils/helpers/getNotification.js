@@ -4,6 +4,7 @@ const getNotification = userId => Models.notifications.findAll({
   where: {
     userId,
   },
+  order: [['updatedAt', 'DESC']],
 })
   .then(result => result.map(notification => ({
     transactionId: notification.dataValues.transactionId,

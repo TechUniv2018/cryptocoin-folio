@@ -11,6 +11,7 @@ module.exports = userId => Promise.all([
       }],
       status: 0,
     },
+    order: [['updatedAt', 'DESC']],
     include: [
       {
         model: Models.coins,
@@ -35,6 +36,7 @@ module.exports = userId => Promise.all([
       },
       status: 0,
     },
+    order: [['updatedAt', 'DESC']],
     include: [
       {
         model: Models.coins,
@@ -58,6 +60,7 @@ module.exports = userId => Promise.all([
         [Models.Sequelize.Op.not]: 0,
       },
     },
+    order: [['updatedAt', 'DESC']],
     include: [
       {
         model: Models.coins,
@@ -81,6 +84,7 @@ module.exports = userId => Promise.all([
         [Models.Sequelize.Op.not]: 0,
       },
     },
+    order: [['updatedAt', 'DESC']],
     include: [
       {
         model: Models.coins,
